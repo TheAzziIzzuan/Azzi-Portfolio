@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cloud Architecture and Technologies</title>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../../default.css">
+
+
+    <style type="text/css">
+        .img-container {
+            max-width: 600px;
+        }
+        
+        img {
+            width: 100%
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="nav-wrapper">
+
+        <!-- Link around dots-wrapper added after tutorial video -->
+        <a href="../index.html">
+            <div class="dots-wrapper">
+                <div id="dot-1" class="browser-dot"></div>
+                <div id="dot-2" class="browser-dot"></div>
+                <div id="dot-3" class="browser-dot"></div>
+            </div>
+        </a>
+
+        <ul id="navigation">
+            <li><a href="../../index.html#contact">Contact</a></li>
+
+        </ul>
+    </div>
+
+    <div class="main-container">
+        <br>
+
+        <h3>Cloud Architecture and Technologies</h3>
+
+        <h5>Technologies:</h5>
+        <ul>
+            <li>- Windows Server 2016</li>
+            <li>- ASP.NET</li>
+            <li>- Microsoft SQL Server 2017</li>
+            <li>- AWS</li>
+
+        </ul>
+
+        <p style="text-align:justify"> The project report discusses the solutions implemented for both the mandatory and optional requirements of the second assignment. A detailed description of each solution is provided along with the steps taken to construct it. The report also mentions
+            any challenges faced while constructing the solutions and the methods used to overcome them. The assignment was completed as a group using a single AWS account belonging to Azzi, who had the most credit balance. The team communicated and collaborated
+            using Discord, as it was the most familiar platform for all members, and Azzi used screen sharing through it. If Azzi was unavailable, the team could still work on the assignment by remotely accessing his desktop using TeamViewer. This allowed
+            for efficient division of tasks with some team members conducting research while others worked on the assignment.
+            <br>
+            <h5>First mandatory requirement</h5>
+            <p style="text-align:justify">The first mandatory requirement involves deploying a scalable, resilient, and load-balanced web server to host the website of the assigned fictitious company. The specifications dictate that General Purpose servers running Windows Server 2016
+                Core should be deployed. The web servers must operate at a minimum of two instances during low demand and have the ability to scale up to four instances during high demand. The web servers host a simple web application created using ASP.NET,
+                acquired from the Web Application Development (WEB) module. The purpose of the application is to capture customer information, such as e-mail, first name, and last name. Both servers host identical copies of the web application.</p>
+
+            <h5>Second mandatory requirement</h5>
+            <p style="text-align:justify">The second mandatory requirement involves creating a NoSQL database to store customer information, consisting of e-mail, first name, and last name fields. The database language chosen was Microsoft SQL Server 2017. The customer table in the
+                database includes e-mail as the primary key and fields for first name and last name. The NoSQL database was placed in a secure private subnet (10.0.1.0, 10.0.3.0) to prevent unauthorized access by the general public. Access to the database
+                requires authentication through a username and password. The chosen username and password were based on a practical example from Week 12 and were set to "sqladmin" and "password123," respectively. </p>
+
+            <div class="img-container">
+                <img src="../../images/cloud architecure/second.png">
+            </div>
+
+            <h5>Third mandatory requirement</h5>
+            <p style="text-align:justify">The third mandatory requirement involves creating a serverless function to post data into the previously established NoSQL database. The program was created using the ASP.NET programming language, which was learned in the Web Application Development
+                (WEB) module. The program includes a HTML form that captures the customer's e-mail address, first name, and last name, storing the data in a model object. The data is then sent to the Data Access Layer (DAL), which manages communication
+                with the database, sending and receiving data as necessary. A connection string is required to establish the connection, which is added to the application.json file in the ASP.NET program. When the form is submitted, the program triggers
+                the DAL to execute an SQL query, inserting the customer data into the database fields for a new customer object.</p>
+
+            <div class="img-container">
+                <img src="../../images/cloud architecure/third.png">
+            </div>
+
+            <h5>Fourth mandatory requirement</h5>
+            <p style="text-align:justify">The fourth mandatory requirement was to establish a notification system to alert the administrator upon the addition of new customer data into the NoSQL database and/or the upload of new pictures into the S3 bucket. The options for the notification
+                type included email or phone message, and the latter was chosen due to the lack of required account privileges for email. A Lambda function was utilized to trigger the notification, utilizing Python as the base language. The required permissions
+                for the function were Cloud Watch Full Access for monitoring and logging, Amazon DynamoDB Full Access for accessing the DynamoDB, and Amazon Simple Notification Service (SNS) Full Access for SMS capabilities.</p>
+
+            <h5>First optional requirement</h5>
+            <p style="text-align:justify">The first optional requirement involves the creation of a form, which was repurposed from the third mandatory requirement, to capture customer data and insert it into the NoSQL database using HTTP and the ASP.NET program. An API was implemented
+                using AWS API Gateway to handle the requests from the ASP.NET program, which required running a AWS Lambda script to insert the customer's data into the HTTP form. The implementation was carried out seamlessly with the third requirement
+                using the same form, as there was already validation in place to prevent duplicates in the RDS database. As a result, when the customer submits the HTTP form, the new entry is inserted into both RDS and DynamoDB simultaneously.</p>
+
+            <div class="img-container">
+                <img src="../../images/cloud architecure/firstoptional.png">
+            </div>
+
+            <h5>Second optional requirement</h5>
+            <p style="text-align:justify">The Second optional requirement involves the creation of a thumbnail for pictures uploaded to an S3 bucket. To fulfill this requirement, a serverless function using Lambda was implemented that triggers a Python code upon the upload of a picture
+                to the S3 bucket. The Python code resizes the original image into a thumbnail, which is then posted to another S3 bucket that contains only resized images. Additionally, a Lambda function sends a notification to the administrator's phone
+                number when an image is uploaded.</p>
+
+            <div class="img-container">
+                <img src="../../images/cloud architecure/secondoptional.png">
+            </div>
+
+            <a href="../../posts/cloud architecture/CAT Assignment Report.pdf">Read more about problems encountered here</a>
+
+            <h5>Conclusion</h5>
+            <p style="text-align:justify">The team views the final assignment as a demonstration of their learned knowledge and understanding of AWS. They experienced a simulated real-world configuration, although they believe that an actual real-world project would be more challenging.
+                The assignment also tested their capability to launch a functioning VPC for a "real life" scenario where a data collection program would collect information through a HTTP form and send it to the back end of the system. In an actual real-world
+                scenario, the back end must not be publicly accessible and the front end must be able to handle sudden spikes in traffic and scale down during off-peak hours. By using two availability zones, the system becomes less susceptible to failure
+                in the event of a natural disaster. If one instance fails, there is a backup to ensure that the system does not crash. The team felt that the assignment was slightly off-topic as some of the tasks they had to perform were not covered in
+                previous lessons, such as creating an S3 bucket thumbnail generator. This required them to spend time researching online, which they found tedious. They would have preferred to use what they learned in previous weeks more effectively in
+                the assignment. Additionally, the team found it challenging to work on the assignment because it had to be completed on one computer so that the marker could easily access the completed work. This meant that the team could only work together
+                when all members were available, which was not as productive as their usual process of using Discord to collaborate and help each other with various aspects of the assignment. At times, when one member was unavailable, they used TeamViewer
+                to remotely control his desktop to continue their work. Overall, the team felt that they worked well together as they have been collaborating on projects for over a year and a half. The team also encountered difficulties due to the Covid-19
+                situation, as they were unable to meet in person to work on the assignment, which they normally found more productive. Despite this, they were grateful that they were able to complete all the required and optional requirements in a timely
+                manner and can now move on to studying for the upcoming Common test and focusing on other assignments.</p>
+            <br>
+            <br>
+
+    </div>
+
+</body>
+
+</html>
