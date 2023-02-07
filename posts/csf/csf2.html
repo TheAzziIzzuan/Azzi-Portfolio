@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cyber Security Fundementals</title>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../../default.css">
+
+
+    <style type="text/css">
+        .img-container {
+            max-width: 600px;
+        }
+        
+        img {
+            width: 100%
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="nav-wrapper">
+
+        <!-- Link around dots-wrapper added after tutorial video -->
+        <a href="../index.html">
+            <div class="dots-wrapper">
+                <div id="dot-1" class="browser-dot"></div>
+                <div id="dot-2" class="browser-dot"></div>
+                <div id="dot-3" class="browser-dot"></div>
+            </div>
+        </a>
+
+        <ul id="navigation">
+            <li><a href="../../index.html#contact">Contact</a></li>
+
+        </ul>
+    </div>
+
+    <div class="main-container">
+        <br>
+        <h3>Tools needed to perform CSRF</h3>
+        <h5>What are the tools we need?:</h5>
+        <ul>
+            <li>- Burp-Suite</li>
+            <li>- OWASP </li>
+            <li>- Kali Linux</li>
+        </ul>
+
+        <h5>What is BurpSuite?</h5>
+        <p>Software tool used for security testing and scanning on the web application. It helps to distinguish vulnerabilities and check attack vectors are affecting web applications.</p>
+        <div class="img-container">
+            <img src="../../images/csf/burpsuite.png">
+        </div>
+        <br>
+        <br>
+        <h5>Installation of BurpSuite</h5>
+        <p>- Kali linux</p>
+        <ul>
+            <li>- Kali Linux has a pre-installed burp suite, so you do not need to install it again</li>
+        </ul>
+        <p>-Windows</p>
+        <ul>
+            <li><a href="https://portswigger.net/burp" target="_blank">- Installation Link: https://portswigger.net/burp</a></li>
+            <li>- Download and install the community version</li>
+        </ul>
+        <p>In this tutorial, we will be running it on Kali Linux. Recommended OS will be kali linux. </p>
+
+        <h5>Installation of kali Linux</h5>
+        <P>A Debian derived Linux operating system used for ethical hacking. It contains open-sourced hacking tools that can be used for penetration testing. Well-known tools such as Metasploit, nmap, aircrack-ng and etc. can be found on the system. Users
+            often use Kali Linux as their platform to find the company's vulnerabilities</P>
+        <a href="https://www.dropbox.com/s/7iuj38f9n98e2um/kali-linux-2018.4-vm-amd64.zip?dl=0" target="_blank">Kali Linux Link</a>
+
+        <p>Open up VMWare Workstation and click on open a virtual machine (The file that you downloaded is a VMware image, therefore there isn't a need to a new virtual machine</p>
+        <div class="img-container">
+            <img src="../../images/csf/step1.png">
+        </div>
+        <br>
+        <p>Click on "Power on this virtual machine"</p>
+        <div class="img-container">
+            <img src="../../images/csf/step2.png">
+        </div>
+        <br>
+        <p>Username: root</p>
+        <p>Username: toor</p>
+        <div class="img-container">
+            <img src="../../images/csf/step3.png">
+        </div>
+        <br>
+        <br>
+        <p>You now have Kali Linux on your VMware! Let's start right into hacking in the next section</p>
+        <div class="img-container">
+            <img src="../../images/csf/kali.png">
+        </div>
+        <br>
+        <br>
+        <h5>What is OWASP?</h5>
+        <p style="text-align:justify">OWASP stands for Open Web Application Security Project OWASP is an insecure web application.It is a platform where users can set up the environment to perform attacks on the website. Help to educate developers and everyone who is using the internet
+            about what are the risks associated with the current common web application vulnerabilities</p>
+
+
+        <h5>Installation of OWASP</h5>
+        <p>In this tutorial, we will be using the OWASP juice shop as our platform to perform CSRF.</p>
+        <ul>
+            <li>Open up the folder located at ~/Downloads/CSFR/juice-shop_8.7.2/</li>
+            <li>Open up terminal and type "npm start" to start up the node application</li>
+        </ul>
+        <div class="img-container">
+            <img src="../../images/csf/juice.png">
+        </div>
+        <br>
+        <br>
+        <p>Open Firefox and on the URL enter "localhost:3000"</p>
+        <p>Click "delete cookie to clear hacking progress" and reload the page</p>
+        <div class="img-container">
+            <img src="../../images/csf/jucie2.png">
+        </div>
+        <br>
+        <div class="img-container">
+            <img src="../../images/csf/juice3.png">
+        </div>
+        <br>
+        </p>
+        Click <a href="../../posts/csf/csf3.html" target="_blank">Here</a> to start hacking!
+        <br>
+        <br>
+        <br>
+
+    </div>
+
+</body>
+
+</html>
