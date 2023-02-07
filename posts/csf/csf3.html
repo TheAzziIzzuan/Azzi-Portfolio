@@ -48,12 +48,171 @@
         <br>
 
 
-        <h3>Will Be Added 8/2/2023</h3>
+        <h3>Part 3 - Performing CSRF</h3>
+        <h5>With the tools that you have installed. We can now start doing by finding the vulnerability of the Juiceshop website.</h5>
+        <P>First Create an account on the Juiceshop website.</P>
+        <div class="img-container">
+            <img src="../../images/csf/account1.png">
+        </div>
+        <br>
+        <p>Creating an account, your own details will do.</p>
+        <div class="img-container">
+            <img src="../../images/csf/account2.png">
+        </div>
+        <br>
+        <p>and Login to the juice shop.</p>
+        <div class="img-container">
+            <img src="../../images/csf/account3.png">
+        </div>
+        <br>
+        <br>
+        <p>Start up Burpsuite</p>
+        <br>
+        <p>Select "temporary project" and click Next.</p>
+        <div class="img-container">
+            <img src="../../images/csf/startup1.png">
+        </div>
+        <br>
+        <p>Select "Use Burp Details" and click Start Burp.</p>
+        <div class="img-container">
+            <img src="../../images/csf/start3.png">
+        </div>
+        <br>
+        <br>
+        <div class="img-container">
+            <img src="../../images/csf/start4.png">
+        </div>
+        <br>
+        <p>Burpsuite is now open, click on proxy tab and ensure that intercept is of because we won't be intercepting any connections.</p>
+        <div class="img-container">
+            <img src="../../images/csf/intercept1.png">
+        </div>
+        <br>
+        <br>
+        <P>We will be making use of Burpsuite to sniff the incoming and outgoing HTTP request.</P>
+
+        <P>In this CSRF tutorial, we will be creating a website to trick the user.</P>
+
+        <p>Change the password of your account to inspect how does the webpage send the HTTPRequest.</p>
+        <div class="img-container">
+            <img src="../../images/csf/intercept2.png">
+        </div>
+        <br>
+        <p>Go to Proxy tab and see the HTTP History. As you can see that website uses GET request.</p>
+        <div class="img-container">
+            <img src="../../images/csf/Proxy.png">
+        </div>
+        <br>
+        <p>Send it to the Repeater for manually manipulating and reissuing individual HTTP requests, and analyzing the application's responses.</p>
+        <br>
+        <div class="img-container">
+            <img src="../../images/csf/Proxy2.png">
+        </div>
+        <br>
+        <p>Go to the Repeater tab.</p>
+        <div class="img-container">
+            <img src="../../images/csf/repeater.png">
+        </div>
+        <br>
+        <p>Look at the request and response</p>
+        <div class="img-container">
+            <img src="../../images/csf/response.png">
+        </div>
+        <br>
+        <P>Remove the current password value and notice that the request still works Copy the GET request and we will be using it to create a CSFR.</P>
+        <div class="img-container">
+            <img src="../../images/csf/remove.png">
+        </div>
+        <br>
+        <br>
+        <P>Create a new text and type the following code:</P>
+        <textarea disabled="true" style="border: none;background-color:white;">
+            <iframe src="javascript:xmlhttp = new XMLHttpRequest();
+                xmlhttp.open('GET', 'http://localhost:3000');
+                xmlhttp.setRequestHeader('Authorization',`Bearer=${localStorage.getItem('token')}`);
+                xmlhttp.send();">
+             </iframe>
+        </textarea>
+        <div class="img-container">
+            <img src="../../images/csf/xmp.png">
+        </div>
+        <br>
+        <p>Paste the get request after http://localhost:3000</p>
+        <p>Set your password you want to change for your target user and copy the entire script.</p>
+        <div class="img-container">
+            <img src="../../images/csf/copyscript.png">
+        </div>
+        <br>
+        <p>We will need to execute this script on the site, in order for the CSRF to work.</p>
+        <p>The search box uses get request.</p>
+        <p>Paste the script on to the search box.</p>
+        <div class="img-container">
+            <img src="../../images/csf/paste.png">
+        </div>
+        <br>
+        <p>Notice how the script is successfully executed.</p>
+        <p>It has successfully changed my password without using the change password form. </p>
+        <p>The URL is the key to perform CSRF, copy the URL and shorten it with tinyurl.com to make the URL less suspicious.</p>
+        <div class="img-container">
+            <img src="../../images/csf/less.png">
+        </div>
+        <br>
+        <p>Create an HTML webpage to trick the user into clicking the link.</p>
+        <textarea disabled="true" style="border: none;background-color:white;">
+            <!DOCTYPE html>
+                <html>
+                <body>
+
+                Click link to watch an awesome video:
+
+                ​
+
+                <br>
+                <img border="0" alt="hidden" src="https://i.pinimg.com/236x/f6/06/db/f606dbfc85f604adfc890c7cdd366a96--le-moral-cute-food.jpg" width="100" height="100">
 
 
+                </p>
 
-    </div>
+                <p><a href="http://tiny.cc/vcuiaz">Watch Video</a></p>
 
+                </body>
+                </html>
+        </textarea>
+        <br>
+        <div class="img-container">
+            <img src="../../images/csf/website.png">
+        </div>
+        <br>
+        <p>How the CSFR webpage looks like, seems harmless.</p>
+        <div class="img-container">
+            <img src="../../images/csf/harmless.png">
+        </div>
+        <br>
+        <p>Now create a victim account and try it out.</p>
+        <div class="img-container">
+            <img src="../../images/csf/victimaccount.png">
+        </div>
+        <br>
+        <p>Victim user logging in, establishing trusted connection between victim and webpage.</p>
+        <div class="img-container">
+            <img src="../../images/csf/victimmachine1_JPG.png">
+        </div>
+        <br>
+        <p>Victim can makes purchases</p>
+        <div class="img-container">
+            <img src="../../images/csf/victimmachine3_JPG.png">
+        </div>
+        <br>
+        <p>He notices this link sent by his friend about how cute the marshmallow is! but in fact the link the link he clicked on is changing his password without him knowing</p>
+        <div class="img-container">
+            <img src="../../images/csf/victimmachine4_JPG.png">
+        </div>
+        <br>
+        <p>As the victim logs out from the website, he won't be able to gain access anymore!</p>
+        <div class="img-container">
+            <img src="../../images/csf/victimmachine6_JPG.png">
+        </div>
+        <h5>Congrats you have perform your first CSRF!</h5>
 </body>
 
 </html>
