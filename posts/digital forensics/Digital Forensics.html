@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Digital Forensics</title>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../../default.css">
+
+
+    <style type="text/css">
+        .img-container {
+            max-width: 600px;
+        }
+        
+        img {
+            width: 100%
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="nav-wrapper">
+
+        <!-- Link around dots-wrapper added after tutorial video -->
+        <a href="../index.html">
+            <div class="dots-wrapper">
+                <div id="dot-1" class="browser-dot"></div>
+                <div id="dot-2" class="browser-dot"></div>
+                <div id="dot-3" class="browser-dot"></div>
+            </div>
+        </a>
+
+        <ul id="navigation">
+            <li><a href="../../index.html#contact">Contact</a></li>
+
+        </ul>
+    </div>
+
+    <div class="main-container">
+        <br>
+
+        <h3>Digital Forensics</h3>
+        <h5>See Full Resolution Poster <a href="../../posts/digital forensics/RafaelandAzzi-Group5.pdf ">Here!</a></h5>
+
+        <p style="text-align:justify">The purpose of this assignment is to utilize the tools dcfldd 1.3.4-1 and bulk-extractor to carry out forensic analysis in a professional and efficient manner. The use of dcfldd will help to verify the integrity of disk imaging or wiping processes
+            and gather important information from disk images, files, or collections of files. Additionally, bulk-extractor provides the capability to uncover hidden information, such as email addresses, URLs, and credit card numbers, from compressed
+            data and fragmented or partially damaged files. With these tools at hand, the aim of the assignment is to gather information and evidence in an organized and thorough manner. The assignment was successfully completed by Rafael and Azzi.</p>
+        <h4>First tool - dcfldd 1.3.4-1 (by Rafael Kamil)</h4>
+        <p style="text-align:justify">dcfldd is a sophisticated iteration of the popular GNU dd software, designed specifically for forensic and security purposes. Building upon the foundation of the dd program found in the GNU Coreutils package, dcfldd offers enhanced capabilities,
+            including the following additional features:</p>
+        <ul>
+            <li style="text-align: justify;">- dcfldd provides status updates to keep the user informed on the progress of data transfer. These updates include the amount of data transferred and an estimate of how much time remains until the operation is complete.</li>
+            <br>
+            <li style="text-align: justify;">- dcfldd offers versatile disk wiping capabilities, allowing for the efficient and thorough elimination of data, with the option to use a desired pattern if desired.</li>
+            <br>
+            <li style="text-align: justify;">- dcfldd provides the ability to verify the accuracy of disk imaging or wiping processes, ensuring that the target drive is an exact replica of the specified input file or pattern, down to each individual bit.</li>
+        </ul>
+        <br>
+
+        <h4>Second tool - Bulk-Extractor (by Azzi Izzuan)</h4>
+        <p style="text-align:justify">bulk_extractor is a powerful C++ tool that enables the extraction of valuable information from disk images, files, or collections of files, without the need for parsing the underlying file system or its structures, including the following additional
+            features:
+        </p>
+        <ul>
+            <li style="text-align: justify;">- Upon completion of the analysis, create a histogram that visually represents the distribution of information, including email addresses, URLs, domain names, search keywords, and other relevant data.</li>
+            <br>
+            <li style="text-align: justify;">- Uncover previously undiscovered information, including email addresses, URLs, and credit card numbers, using a tool that can efficiently handle compressed data like ZIP, PDF, and GZIP files, as well as fragmented or partially damaged data.
+                This tool has the ability to extract JPEG files, office documents, and various other file types from within compressed data, and can seamlessly detect and extract encrypted RAR files.</li>
+            <br>
+            <li style="text-align: justify;">- Construct a comprehensive list of words discovered within the data, including those found in compressed files that lack allocated space. This word list can be utilized in password cracking efforts.</li>
+        </ul>
+        <br>
+        <h5>Poster:</h5>
+        <div class="img-container">
+            <img src="../../images/digital forensics/Group 5_page-0001.jpg">
+        </div>
+    </div>
+
+</body>
+
+</html>
