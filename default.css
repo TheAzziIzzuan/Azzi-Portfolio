@@ -410,3 +410,15 @@ textarea {
     width: 500px;
     height: 175px;
 }
+
+.fakeimg {
+    display: block;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card {
+    width: 1200px;
+    margin: 0 auto;
+}
