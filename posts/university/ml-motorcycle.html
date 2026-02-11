@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Machine Learning - Motorcycle Price Prediction</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../../default.css">
+
+    <style type="text/css">
+        .img-container {
+            max-width: 600px;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .model-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1em;
+            margin: 1.5em 0;
+        }
+
+        .model-card {
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 1.2em;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .model-card h4 {
+            margin: 0 0 0.5em 0;
+            font-size: 0.95em;
+            color: #42a5f5;
+        }
+
+        .model-card p {
+            margin: 0;
+            font-size: 0.85em;
+            line-height: 1.6;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8em;
+            margin: 1.5em 0;
+        }
+
+        .feature-item {
+            padding: 0.8em 1em;
+            border-left: 3px solid #42a5f5;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 0 6px 6px 0;
+        }
+
+        .feature-item strong {
+            display: block;
+            margin-bottom: 0.3em;
+            font-size: 0.9em;
+        }
+
+        .feature-item span {
+            font-size: 0.82em;
+            line-height: 1.5;
+            opacity: 0.85;
+        }
+
+        .pipeline-steps {
+            list-style: none;
+            padding: 0;
+            margin: 1.5em 0;
+            counter-reset: step;
+        }
+
+        .pipeline-steps li {
+            padding: 0.8em 1em;
+            border-left: 3px solid #42a5f5;
+            margin-bottom: 0.6em;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 0 6px 6px 0;
+            font-size: 0.88em;
+            line-height: 1.6;
+        }
+
+        .pipeline-steps li strong {
+            display: block;
+            margin-bottom: 0.2em;
+            font-size: 0.95em;
+        }
+
+        code {
+            background: rgba(66, 165, 245, 0.12);
+            padding: 0.15em 0.4em;
+            border-radius: 4px;
+            font-size: 0.88em;
+            font-family: 'Roboto Mono', monospace;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="nav-wrapper">
+
+        <a href="../../index.html">
+            <div class="dots-wrapper">
+                <div id="dot-1" class="browser-dot"></div>
+                <div id="dot-2" class="browser-dot"></div>
+                <div id="dot-3" class="browser-dot"></div>
+            </div>
+        </a>
+
+    </div>
+
+    <div class="main-container">
+
+        <h3>Machine Learning Project</h3>
+        <p><em>Motorcycle Price Prediction for the Singapore Market</em></p>
+
+        <!-- ───── Overview ───── -->
+        <h4>Overview</h4>
+        <p>
+            A full-stack machine learning web application that predicts the resale price of motorcycles in Singapore.
+            The system trains and compares five different ML algorithms, then lets users pick the best-performing model
+            through an admin panel. Regular users simply enter their bike's details — engine size, mileage, COE expiry,
+            number of owners — and get an instant price estimate.
+        </p>
+        <p>
+            Singapore's motorcycle market is unique because of the Certificate of Entitlement (COE) system, which
+            heavily influences vehicle pricing. The models account for this by treating COE expiry as a key feature,
+            adjusting predictions based on how many years of COE are left on the vehicle.
+        </p>
+
+        <!-- ───── ML Models ───── -->
+        <h4>Models Trained &amp; Compared</h4>
+        <p>Five regression models were trained on the same dataset and evaluated side-by-side using MAE, RMSE, and R&#178; score:</p>
+
+        <div class="model-grid">
+            <div class="model-card">
+                <h4>Random Forest</h4>
+                <p>
+                    Ensemble of decision trees that averages predictions to reduce overfitting. Good baseline model
+                    that handles non-linear relationships and mixed feature types without heavy preprocessing.
+                </p>
+            </div>
+            <div class="model-card">
+                <h4>XGBoost</h4>
+                <p>
+                    Gradient-boosted decision trees with regularisation. Builds trees sequentially, where each new
+                    tree corrects the errors of the previous ones. Strong performance on structured tabular data.
+                </p>
+            </div>
+            <div class="model-card">
+                <h4>LightGBM</h4>
+                <p>
+                    Microsoft's gradient boosting framework using leaf-wise tree growth for faster training. Includes
+                    post-prediction adjustments for engine capacity, owner count, and mileage to fine-tune estimates.
+                </p>
+            </div>
+            <div class="model-card">
+                <h4>Support Vector Machine (SVM)</h4>
+                <p>
+                    SVR with RBF kernel, trained using a pipeline with RobustScaler for outlier-resistant normalisation.
+                    Hyperparameters tuned via RandomizedSearchCV. Log transformation applied to target prices for
+                    better distribution handling.
+                </p>
+            </div>
+            <div class="model-card">
+                <h4>CatBoost</h4>
+                <p>
+                    Handles categorical features natively without explicit encoding. Uses advanced feature engineering
+                    including log-transformed mileage and engine capacity, polynomial interactions, and bike age
+                    derived features.
+                </p>
+            </div>
+        </div>
+
+        <!-- ───── Input Features ───── -->
+        <h4>Input Features</h4>
+
+        <div class="feature-list">
+            <div class="feature-item">
+                <strong>Engine Capacity (cc)</strong>
+                <span>Displacement of the motorcycle engine — the single strongest price signal in the dataset</span>
+            </div>
+            <div class="feature-item">
+                <strong>Registration Date</strong>
+                <span>Year the bike was first registered in Singapore, used to calculate vehicle age</span>
+            </div>
+            <div class="feature-item">
+                <strong>COE Expiry Date</strong>
+                <span>When the Certificate of Entitlement expires — more years left means significantly higher value</span>
+            </div>
+            <div class="feature-item">
+                <strong>Mileage (km)</strong>
+                <span>Total distance ridden; higher mileage reduces predicted price through depreciation modelling</span>
+            </div>
+            <div class="feature-item">
+                <strong>Number of Owners</strong>
+                <span>Previous ownership count — each additional owner applies a ~10% depreciation factor</span>
+            </div>
+            <div class="feature-item">
+                <strong>Brand &amp; Category</strong>
+                <span>Manufacturer (Honda, Yamaha, Ducati, BMW, etc.) and bike type (Sport, Cruiser, Scooter, Touring, etc.) — label-encoded for tree models, one-hot encoded for SVM</span>
+            </div>
+        </div>
+
+        <!-- ───── Data Pipeline ───── -->
+        <h4>Data Pipeline</h4>
+        <ul class="pipeline-steps">
+            <li>
+                <strong>1 &mdash; Data Collection</strong>
+                Motorcycle listing data scraped and compiled from the Singapore resale market, stored in <code>combined_dataset_latest.xlsx</code>
+            </li>
+            <li>
+                <strong>2 &mdash; Cleaning &amp; Preprocessing</strong>
+                Strip currency symbols and non-numeric characters from price, engine capacity, and mileage columns.
+                Handle missing values with median imputation. Remove statistical outliers using z-score filtering.
+            </li>
+            <li>
+                <strong>3 &mdash; Feature Engineering</strong>
+                Derive <code>Bike_Age</code> from registration year, <code>COE Years Left</code> from expiry date,
+                log-transform skewed features (mileage, engine capacity), and create interaction terms
+                (<code>Engine_Capacity × Bike_Age</code>, <code>Mileage × COE_Years_Left</code>)
+            </li>
+            <li>
+                <strong>4 &mdash; Encoding &amp; Scaling</strong>
+                Label encoding for categorical features (Brand, Category). RobustScaler for SVM to handle outliers.
+                One-hot encoding variant used by SVM to produce 52-feature vectors.
+            </li>
+            <li>
+                <strong>5 &mdash; Training &amp; Evaluation</strong>
+                80/20 train-test split. Each model trained independently. Performance compared on MAE, RMSE, and R&#178;.
+                Hyperparameter tuning via RandomizedSearchCV for SVM and CatBoost.
+            </li>
+        </ul>
+
+        <!-- ───── Web Application ───── -->
+        <h4>Web Application</h4>
+        <p>
+            The Flask web interface has two roles. <strong>Users</strong> fill in a form with their motorcycle's
+            details and get an instant price prediction powered by the currently active model. <strong>Admins</strong>
+            can view all five models' performance metrics side-by-side, switch the active model, toggle input filters
+            (license class, mileage range, COE years left), and access visualisations — scatter plots of actual vs.
+            predicted prices, error distributions, residual plots, and feature importance charts.
+        </p>
+
+        <!-- ───── Tech Stack ───── -->
+        <h4>Tech Stack</h4>
+        <div class="feature-list">
+            <div class="feature-item">
+                <strong>Backend</strong>
+                <span>Python 3.11, Flask, Jinja2 templates</span>
+            </div>
+            <div class="feature-item">
+                <strong>ML Libraries</strong>
+                <span>scikit-learn, XGBoost, LightGBM, CatBoost, NumPy, Pandas</span>
+            </div>
+            <div class="feature-item">
+                <strong>Visualisation</strong>
+                <span>Matplotlib, Seaborn — generated server-side and served as static images</span>
+            </div>
+            <div class="feature-item">
+                <strong>Frontend</strong>
+                <span>Bootstrap 4, jQuery, Font Awesome</span>
+            </div>
+        </div>
+
+        <!-- ───── My Role ───── -->
+        <h4>My Role</h4>
+        <p>
+            I worked on the SVM training pipeline — building the <code>SVMMotorbikeTrainer</code> class with
+            RobustScaler, log-price transformation, outlier removal, and hyperparameter tuning. I also developed
+            the prediction adjustment logic that accounts for COE years remaining, owner count, and engine size
+            to bring SVM predictions closer to market reality. Beyond the SVM, I contributed to integrating all
+            five models into the Flask application and building the admin panel's model comparison features.
+        </p>
+
+        <!-- ───── Team & Link ───── -->
+        <h4>Team</h4>
+        <p>Machine Learning Group Project</p>
+        <p><a href="https://github.com/TheAzziIzzuan/ML_PROJECT" target="_blank">View on GitHub &rarr;</a></p>
+
+    </div>
+</body>
+
+</html>
