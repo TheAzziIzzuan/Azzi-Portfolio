@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Delivery Parcel Flip Detection System</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../../default.css">
+
+    <style type="text/css">
+        .img-container {
+            max-width: 600px;
+        }
+        
+        img {
+            width: 100%
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="nav-wrapper">
+
+        <!-- Link around dots-wrapper added after tutorial video -->
+        <a href="../../index.html">
+            <div class="dots-wrapper">
+                <div id="dot-1" class="browser-dot"></div>
+                <div id="dot-2" class="browser-dot"></div>
+                <div id="dot-3" class="browser-dot"></div>
+            </div>
+        </a>
+
+        <ul id="navigation">
+            <li><a href="../../index.html#contact">Contact</a></li>
+
+        </ul>
+    </div>
+
+    <div class="main-container">
+        <br>
+
+        <h3>ICT1011P1F - Delivery Parcel Flip Detection System</h3>
+        
+        <p><strong>Project Type:</strong> IoT Monitoring System</p>
+
+        <h4>Project Overview</h4>
+        <p align="justify">An intelligent IoT system designed to detect and monitor package handling during delivery. The system tracks acceleration and temperature in real-time to identify if parcels are flipped, dropped, or exposed to extreme temperatures, providing valuable data for improving logistics and package safety.</p>
+
+        <h4>Key Features</h4>
+        <ul>
+            <li>Real-time acceleration monitoring using BMA250 sensor</li>
+            <li>Temperature tracking for temperature-sensitive packages</li>
+            <li>Dual-mode operation: Online (cloud-based) and Offline (local logging)</li>
+            <li>Customizable alert thresholds for shock and temperature</li>
+            <li>Live data visualization with charts and analytics</li>
+            <li>Data export functionality (CSV format)</li>
+            <li>Real-time notifications for anomalies</li>
+        </ul>
+
+        <h4>Hardware Components</h4>
+        <ul>
+            <li>TinyZero Board (Arduino-compatible)</li>
+            <li>BMA250 3-axis Accelerometer Sensor</li>
+            <li>TinyScreen Display with buttons</li>
+            <li>WiFi101 Shield for wireless connectivity</li>
+            <li>Real-Time Clock (RTC) for timestamp accuracy</li>
+        </ul>
+
+        <h4>System Architecture</h4>
+        <ul>
+            <li><strong>Hardware Layer:</strong> TinyZero microcontroller reads sensor data and manages display/user interface</li>
+            <li><strong>Communication Layer:</strong> WiFi connection to transmit data to cloud server</li>
+            <li><strong>Backend Layer:</strong> Flask-based Python server to receive, process, and store sensor data</li>
+            <li><strong>Analytics Layer:</strong> Web dashboard for real-time visualization and data analysis</li>
+        </ul>
+
+        <h4>Software Technologies</h4>
+        <ul>
+            <li>Arduino/C++ for IoT device firmware</li>
+            <li>Python Flask for backend server</li>
+            <li>HTML/CSS/JavaScript for frontend dashboard</li>
+            <li>Chart.js for data visualization</li>
+            <li>WiFi101 library for wireless communication</li>
+            <li>RTCZero library for real-time clock management</li>
+        </ul>
+
+        <h4>Monitoring Capabilities</h4>
+        <ul>
+            <li><strong>Shock Detection:</strong> Detects sudden impacts and sudden movements (acceleration threshold alerts)</li>
+            <li><strong>Temperature Monitoring:</strong> Tracks ambient temperature to identify temperature excursions</li>
+            <li><strong>Historical Data:</strong> Stores timestamp, acceleration, and temperature readings</li>
+            <li><strong>Alert System:</strong> Desktop notifications when thresholds are exceeded</li>
+        </ul>
+
+        <h4>Data Logging & Export</h4>
+        <ul>
+            <li>Data stored in CSV format with timestamp, acceleration, and temperature</li>
+            <li>Support for both cloud storage and local logging</li>
+            <li>Real-time data display on web dashboard</li>
+            <li>Export functionality for further analysis</li>
+        </ul>
+
+        <h4>User Interface</h4>
+        <ul>
+            <li>Embedded TinyScreen display on device for live status monitoring</li>
+            <li>Menu-driven interface for settings adjustment</li>
+            <li>Web dashboard for remote monitoring and analytics</li>
+            <li>Real-time graphical representation of sensor data</li>
+        </ul>
+
+        <h4>Potential Applications</h4>
+        <ul>
+            <li>Fragile goods delivery tracking</li>
+            <li>Temperature-sensitive package monitoring (pharmaceuticals, food)</li>
+            <li>Logistics quality assurance</li>
+            <li>Supply chain visibility and accountability</li>
+            <li>Insurance and damage claim verification</li>
+        </ul>
+
+        <h4>Technical Challenges & Solutions</h4>
+        <ul>
+            <li><strong>Power Consumption:</strong> Optimized sensor reading intervals to maximize battery life</li>
+            <li><strong>WiFi Connectivity:</strong> Fallback to offline mode for areas without network coverage</li>
+            <li><strong>Data Accuracy:</strong> Calibrated sensor readings and noise filtering algorithms</li>
+            <li><strong>Real-time Alerts:</strong> Implemented notification system for immediate issue detection</li>
+        </ul>
+
+    </div>
+
+</body>
+
+</html>
