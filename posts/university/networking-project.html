@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Networking Project - Enterprise Network Design</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../../default.css">
+
+    <style type="text/css">
+        .img-container {
+            max-width: 600px;
+        }
+        
+        img {
+            width: 100%
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="nav-wrapper">
+
+        <!-- Link around dots-wrapper added after tutorial video -->
+        <a href="../../index.html">
+            <div class="dots-wrapper">
+                <div id="dot-1" class="browser-dot"></div>
+                <div id="dot-2" class="browser-dot"></div>
+                <div id="dot-3" class="browser-dot"></div>
+            </div>
+        </a>
+
+        <ul id="navigation">
+            <li><a href="../../index.html#contact">Contact</a></li>
+
+        </ul>
+    </div>
+
+    <div class="main-container">
+        <br>
+
+        <h3>Networking Project - Designing and Implementing a Scalable Enterprise Network</h3>
+
+        <p><strong>Last Updated:</strong> 11/02/2026</p>
+        <p><strong>Course:</strong> INF1013 Computer Networks (AY2023/24 Trimester 2)</p>
+
+        <h4>Project Overview</h4>
+        <p align="justify">This project demonstrates the design and implementation of a fault-tolerant, scalable enterprise network using Cisco switches and routers. The network supports multiple departments with unique requirements, segregates traffic using VLANs, ensures high availability through redundancy protocols, and provides secure internet access.</p>
+
+        <p align="justify">The key challenge was building a network that balances security, performance, and cost-efficiency while allowing seamless failover and inter-VLAN communication. I collaborated with my team to design the topology, configure routing and switching protocols, and document the infrastructure.</p>
+
+        <h4>Network Architecture</h4>
+        <ul>
+            <li><strong>Core Switches:</strong> Two distribution switches (Layer 3) act as the network backbone with redundancy</li>
+            <li><strong>Access Switches:</strong> Three Level access switches connect end-user devices to the core</li>
+            <li><strong>Routers:</strong> Two routers provide internet connectivity and serve as ISP gateways</li>
+            <li><strong>Departments:</strong> 6 VLANs for HR, Sales, Meeting Room, Technical, Finance, and Country Director Office</li>
+        </ul>
+
+        <h4>Key Design Principles Implemented</h4>
+        
+        <p align="justify"><strong>VLAN Segmentation:</strong> Each department is isolated in its own VLAN to enforce security policies, control access, and simplify network management. This allows the IT team to apply different rules and monitor each department independently.</p>
+
+        <p align="justify"><strong>EtherChannel (Link Aggregation):</strong> Two physical links between distribution switches are combined into a single logical channel, doubling bandwidth and providing redundancy. If one link fails, traffic automatically flows through the other without interruption.</p>
+
+        <p align="justify"><strong>Spanning Tree Protocol (STP):</strong> Prevents network loops by ensuring only one active path exists between devices. If the primary path fails, STP automatically activates a backup path, maintaining connectivity.</p>
+
+        <p align="justify"><strong>Hot Standby Router Protocol (HSRP):</strong> Provides transparent failover between routers. If the primary router goes down, the standby router takes over automatically without users noticing outages. Each VLAN can have different active/standby routers for load balancing.</p>
+
+        <p align="justify"><strong>OSPF Routing:</strong> Dynamically calculates the shortest paths between routers and subnets. If a link fails, OSPF recalculates routes in seconds, ensuring traffic continues to flow through available paths.</p>
+
+        <p align="justify"><strong>Port Address Translation (PAT):</strong> Allows all internal devices to share a small pool of public IP addresses. This saves costs, conserves addresses, and hides internal IPs from the internet, improving security against attacks like DDoS.</p>
+
+        <h4>Technical Implementation</h4>
+        <p align="justify">The project included configuring and documenting all device configs:</p>
+        <ul>
+            <li>2 Distribution Switches (Cisco Catalyst 3650) running VLANs, HSRP, and STP</li>
+            <li>3 Access Switches (Layer 1, 2, 3) connected to end devices</li>
+            <li>2 Routers (Cisco 2911) running OSPF, NAT, and PAT for internet gateway</li>
+            <li>IP addressing scheme across all subnets with proper documentation</li>
+            <li>Redundancy at every level (switches, links, routers)</li>
+        </ul>
+
+        <h4>Why This Matters</h4>
+        <p align="justify">Enterprise networks are critical to business operations. Downtime costs money. This project shows that I can design networks that stay up even when components fail. By segmenting departments into VLANs, we improve security and performance. By adding EtherChannel, STP, and HSRP, we build resilience. By using OSPF, we make routing automatic and flexible. And by implementing NAT and PAT, we manage IP addresses efficiently and securely.</p>
+
+        <p align="justify">The documentation and configuration files in the project show that I understand not just the theory, but how to actually configure and troubleshoot real Cisco equipment.</p>
+
+        <h4>Team</h4>
+        <p align="justify">Team LAB-P1/P2-9: Muhammad Azzi Izzuan Bin Azahar (2301955), Qothrunnada Istiqamah Binte Muhammad Azhar (2301924), Amelia Binte Marzuki (2302159), Khairunnurrin Zurain Binte Khairon Jazan (2302235), Shafeena Sherin Binte Mohamad Sharif (2302177).</p>
+
+        <h4>Deliverables</h4>
+        <p align="justify">The project includes the logical topology diagram, complete IP addressing table, running configurations for all devices, detailed design documentation, and full technical explanations of VLAN, EtherChannel, STP, HSRP, OSPF, and PAT configurations.</p>
+
+    </div>
+
+</body>
+
+</html>

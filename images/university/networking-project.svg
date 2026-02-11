@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a1f34" />
+      <stop offset="100%" stop-color="#1a4d6f" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg)" />
+  <rect x="40" y="40" width="520" height="320" rx="16" ry="16" fill="#0d2844" stroke="#5ba3c5" stroke-width="2" />
+  <!-- Network nodes -->
+  <circle cx="150" cy="150" r="20" fill="#5ba3c5" />
+  <circle cx="300" cy="100" r="20" fill="#5ba3c5" />
+  <circle cx="450" cy="150" r="20" fill="#5ba3c5" />
+  <circle cx="300" cy="280" r="20" fill="#5ba3c5" />
+  <!-- Lines connecting -->
+  <line x1="170" y1="150" x2="280" y2="110" stroke="#5ba3c5" stroke-width="2" />
+  <line x1="320" y1="110" x2="430" y2="150" stroke="#5ba3c5" stroke-width="2" />
+  <line x1="300" y1="120" x2="300" y2="260" stroke="#5ba3c5" stroke-width="2" />
+  <line x1="170" y1="160" x2="280" y2="270" stroke="#5ba3c5" stroke-width="2" />
+  <!-- Text -->
+  <g fill="#e0f1ff" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <text x="300" y="350" font-size="18" font-weight="700">Enterprise Network Design</text>
+    <text x="300" y="375" font-size="13" opacity="0.95">VLAN · OSPF · HSRP · Redundancy</text>
+  </g>
+</svg>

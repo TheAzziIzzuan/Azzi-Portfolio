@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#0f0f1a"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="320" height="180" fill="url(#bg)"/>
+  
+  <!-- Terminal window -->
+  <rect x="30" y="30" width="160" height="120" rx="6" fill="#0d0d0d" stroke="#333" stroke-width="1"/>
+  <rect x="30" y="30" width="160" height="16" rx="6" fill="#222"/>
+  <circle cx="42" cy="38" r="3" fill="#ff5f56"/>
+  <circle cx="52" cy="38" r="3" fill="#ffbd2e"/>
+  <circle cx="62" cy="38" r="3" fill="#27c93f"/>
+  
+  <!-- Terminal text -->
+  <text x="38" y="62" fill="#27c93f" font-family="monospace" font-size="7">$ nmap -sV target</text>
+  <text x="38" y="74" fill="#888" font-family="monospace" font-size="6">PORT   STATE SERVICE</text>
+  <text x="38" y="84" fill="#ff5252" font-family="monospace" font-size="6">80/tcp open  http</text>
+  <text x="38" y="94" fill="#ff5252" font-family="monospace" font-size="6">443   open  https</text>
+  <text x="38" y="106" fill="#27c93f" font-family="monospace" font-size="7">$ exploit --rce</text>
+  <text x="38" y="118" fill="#ffbd2e" font-family="monospace" font-size="6">[+] Shell opened!</text>
+  <text x="38" y="130" fill="#27c93f" font-family="monospace" font-size="7">root@target:~# _</text>
+  
+  <!-- Minecraft block / skull icon -->
+  <rect x="220" y="50" width="60" height="60" rx="4" fill="#3a2a1a" stroke="#555" stroke-width="1"/>
+  <!-- Creeper face -->
+  <rect x="232" y="60" width="10" height="10" fill="#1a1a1a"/>
+  <rect x="250" y="60" width="10" height="10" fill="#1a1a1a"/>
+  <rect x="238" y="72" width="16" height="8" fill="#1a1a1a"/>
+  <rect x="240" y="80" width="4" height="10" fill="#1a1a1a"/>
+  <rect x="248" y="80" width="4" height="10" fill="#1a1a1a"/>
+  
+  <!-- Log4J label -->
+  <text x="250" y="125" fill="#ff5252" font-family="monospace" font-size="8" text-anchor="middle">Log4Shell</text>
+  
+  <!-- Connection line -->
+  <line x1="190" y1="90" x2="220" y2="80" stroke="#ff5252" stroke-width="1" stroke-dasharray="4,3" opacity="0.7"/>
+  
+  <!-- Title -->
+  <text x="160" y="170" fill="#ccc" font-family="sans-serif" font-size="10" text-anchor="middle" font-weight="bold">ETHICAL HACKING</text>
+</svg>

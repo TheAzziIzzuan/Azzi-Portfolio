@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DSA Project - FoodieFinder</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../../default.css">
+
+    <style type="text/css">
+        .img-container {
+            max-width: 600px;
+        }
+        
+        img {
+            width: 100%
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="nav-wrapper">
+
+        <!-- Link around dots-wrapper added after tutorial video -->
+        <a href="../../index.html">
+            <div class="dots-wrapper">
+                <div id="dot-1" class="browser-dot"></div>
+                <div id="dot-2" class="browser-dot"></div>
+                <div id="dot-3" class="browser-dot"></div>
+            </div>
+        </a>
+
+        <ul id="navigation">
+            <li><a href="../../index.html#contact">Contact</a></li>
+
+        </ul>
+    </div>
+
+    <div class="main-container">
+        <br>
+
+        <h3>Data Structures &amp; Algorithms - FoodieFinder</h3>
+
+        <p><strong>Last Updated:</strong> 11/02/2026</p>
+        <p><strong>Project Type:</strong> Full-stack web application (team project)</p>
+
+        <h4>Project Overview</h4>
+        <p align="justify">FoodieFinder is a web application that helps users find halal and vegan food options across Singapore. It combines an interactive map, real-time search, restaurant reviews, rating filters, and walking directions — all powered by data structures and algorithms under the hood.</p>
+
+        <p align="justify">The project goes beyond a simple restaurant listing. It uses Dijkstra's algorithm to calculate nearest restaurants and walking routes, a Trie data structure for fast autocomplete search, QuickSort for filtering by ratings, and sequential search for review lookups. The data itself was collected by building custom web scrapers.</p>
+
+        <h4>What It Does</h4>
+        <ul>
+            <li><strong>Interactive Map:</strong> Displays halal restaurants, vegan restaurants, and MRT stations across Singapore using Leaflet.js with color-coded markers</li>
+            <li><strong>Find Nearest Food:</strong> Uses your current location to find the 7 nearest halal and vegan restaurants plus the closest MRT station</li>
+            <li><strong>Walking Directions:</strong> Calculates and draws the actual walking route from your location to any restaurant or MRT station</li>
+            <li><strong>Search:</strong> Type a restaurant or MRT station name and get instant autocomplete suggestions</li>
+            <li><strong>Filter by Rating:</strong> Filter halal or vegan restaurants by minimum rating</li>
+            <li><strong>Reviews:</strong> Browse aggregated reviews with ratings, search through them, and add your own</li>
+        </ul>
+
+        <h4>Data Structures &amp; Algorithms Used</h4>
+
+        <p align="justify"><strong>Dijkstra's Algorithm:</strong> Used to calculate shortest distances from the user's location to all nearby restaurants and MRT stations. The algorithm builds a graph of nodes (user location + all markers) and edges (distances between them), then finds the optimal nearest locations. It's also used for walking route calculation through OpenStreetMap road networks.</p>
+
+        <p align="justify"><strong>Trie (Prefix Tree):</strong> Powers the search autocomplete feature. All restaurant names and MRT station names are inserted into the Trie at startup. When the user types, the Trie efficiently returns all matching entries by prefix, providing instant suggestions without scanning the entire dataset.</p>
+
+        <p align="justify"><strong>QuickSort:</strong> Applied to filter and sort restaurant results by rating. When users filter by a minimum rating, QuickSort efficiently orders the results for display.</p>
+
+        <p align="justify"><strong>Sequential Search:</strong> Used for searching through reviews and matching user queries against restaurant titles in the dataset.</p>
+
+        <h4>Web Scraping</h4>
+        <p align="justify">The restaurant data was collected by building custom web scrapers using Selenium and BeautifulSoup. The scrapers targeted WhereHalal.com to extract halal restaurant listings including name, address, food type, certification status, and ratings. The data was cleaned and validated using Python scripts that checked for missing values and invalid characters.</p>
+
+        <h4>Tech Stack</h4>
+        <ul>
+            <li><strong>Backend:</strong> Python Flask with SQLAlchemy for user reviews database</li>
+            <li><strong>Frontend:</strong> HTML/CSS/JavaScript with Bootstrap and Leaflet.js for maps</li>
+            <li><strong>Data:</strong> CSV datasets for halal restaurants, vegan restaurants, and MRT stations with geocoordinates</li>
+            <li><strong>Scraping:</strong> Selenium WebDriver + BeautifulSoup for data collection</li>
+            <li><strong>Pathfinding:</strong> OSMnx + NetworkX for real walking route calculation on OpenStreetMap</li>
+            <li><strong>Database:</strong> SQLite for storing user-submitted reviews</li>
+        </ul>
+
+        <h4>Why This Matters</h4>
+        <p align="justify">This project demonstrates how data structures and algorithms aren't just theory — they solve real problems. Dijkstra's algorithm makes location-based search fast and accurate. The Trie makes search feel instant. QuickSort handles filtering efficiently even with large datasets. And the web scraping pipeline shows how to collect, clean, and serve real-world data.</p>
+
+        <p align="justify">From a full-stack perspective, the project covers backend API design, database management, frontend interactivity, map integration, and data engineering — all in one cohesive application.</p>
+
+        <h4>Team</h4>
+        <p align="justify">P7 Group 2 — Data Structures and Algorithms course project.</p>
+
+        <h4>Source Code</h4>
+        <p align="justify"><a href="https://github.com/onghongliang/DSAGroup2" target="_blank">View on GitHub</a></p>
+
+    </div>
+
+</body>
+
+</html>

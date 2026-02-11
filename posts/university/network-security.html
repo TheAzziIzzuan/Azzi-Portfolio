@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Network Security Infrastructure</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../../default.css">
+
+    <style type="text/css">
+        .img-container {
+            max-width: 720px;
+            margin: 1.5em auto;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 6px;
+        }
+
+        .zone-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1em;
+            margin: 1.5em 0;
+        }
+
+        .zone-card {
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 1em;
+            background: rgba(255,255,255,0.03);
+        }
+
+        .zone-card h4 {
+            margin: 0 0 0.4em 0;
+            font-size: 0.95em;
+            color: #00e5ff;
+        }
+
+        .zone-card p {
+            margin: 0;
+            font-size: 0.85em;
+            line-height: 1.5;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8em;
+            margin: 1.5em 0;
+        }
+
+        .feature-item {
+            padding: 0.8em 1em;
+            border-left: 3px solid #00e5ff;
+            background: rgba(255,255,255,0.02);
+            border-radius: 0 6px 6px 0;
+        }
+
+        .feature-item strong {
+            display: block;
+            margin-bottom: 0.3em;
+            font-size: 0.9em;
+        }
+
+        .feature-item span {
+            font-size: 0.82em;
+            line-height: 1.5;
+            opacity: 0.85;
+        }
+
+        .device-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5em 0;
+            font-size: 0.85em;
+        }
+
+        .device-table th,
+        .device-table td {
+            text-align: left;
+            padding: 0.6em 0.8em;
+            border-bottom: 1px solid #333;
+        }
+
+        .device-table th {
+            font-weight: 600;
+            color: #00e5ff;
+            font-size: 0.9em;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="nav-wrapper">
+
+        <a href="../../index.html">
+            <div class="dots-wrapper">
+                <div id="dot-1" class="browser-dot"></div>
+                <div id="dot-2" class="browser-dot"></div>
+                <div id="dot-3" class="browser-dot"></div>
+            </div>
+        </a>
+
+    </div>
+
+    <div class="main-container">
+
+        <h3>Network Security Infrastructure</h3>
+        <p><em>ICT2217 — Designing &amp; Hardening a Secure Enterprise Network</em></p>
+
+        <div class="img-container">
+            <img src="../../images/university/network-security.png" alt="Network topology diagram">
+        </div>
+
+        <!-- ───── Overview ───── -->
+        <h4>Overview</h4>
+        <p>
+            A team project where we designed, built, and secured an enterprise network from the ground up using Cisco equipment.
+            The goal was not just connectivity — every layer of the architecture had to be hardened against real-world threats.
+            We deployed a Cisco ASA firewall as the central security appliance, segmented the network into multiple trust zones,
+            and layered defences from Layer 2 port security all the way up to application-layer inspection.
+        </p>
+        <p>
+            The network supports a realistic corporate scenario: departments separated by VLANs, a DMZ hosting a public web
+            server, an out-of-band management plane, a dedicated IDS sensor receiving NetFlow and syslog data, and a jump host
+            for secure administrative access. Every device is authenticated through a centralised TACACS+ server, and redundancy
+            is built in at every critical point.
+        </p>
+
+        <!-- ───── Security Zones ───── -->
+        <h4>Firewall Security Zones</h4>
+        <p>The Cisco ASA (FPR-1010) sits at the heart of the network, enforcing traffic policies between seven distinct zones:</p>
+
+        <div class="zone-grid">
+            <div class="zone-card">
+                <h4>OUTSIDE</h4>
+                <p>Internet-facing interface connected to the edge router. Security level 0 — least trusted. Inbound ACLs restrict traffic to only expected flows like ICMP echo-reply and SSH to the jump host.</p>
+            </div>
+            <div class="zone-card">
+                <h4>DMZ</h4>
+                <p>Hosts the company web server (192.168.80.2). Security level 50 — semi-trusted. Internal VLANs can reach the web server, but DMZ cannot initiate connections inward.</p>
+            </div>
+            <div class="zone-card">
+                <h4>Jump Host</h4>
+                <p>Dedicated zone (192.168.30.0/24) for secure admin access. Administrators SSH into the jump host first, then pivot to manage internal devices — limiting direct exposure.</p>
+            </div>
+            <div class="zone-card">
+                <h4>IDS</h4>
+                <p>Isolated segment (192.168.150.0/30) for the intrusion detection sensor. Receives NetFlow data from R1 on UDP 9999 and syslog from the firewall for real-time monitoring.</p>
+            </div>
+            <div class="zone-card">
+                <h4>DSW1 &amp; DSW2</h4>
+                <p>Internal zones connecting to distribution switches. Each has its own interface and ACL on the firewall, so east-west traffic between switch blocks is inspected.</p>
+            </div>
+            <div class="zone-card">
+                <h4>Management</h4>
+                <p>Out-of-band management network (10.1.1.0/24). TACACS+ server, device consoles, and management interfaces all sit on this isolated plane — completely separate from production traffic.</p>
+            </div>
+        </div>
+
+        <!-- ───── Security Features ───── -->
+        <h4>Security Features Implemented</h4>
+
+        <div class="feature-list">
+            <div class="feature-item">
+                <strong>TACACS+ AAA</strong>
+                <span>Centralised authentication, authorisation, and accounting via a TACACS+ server (10.1.1.49). Supports role-based access with separate ADMIN and HELPDESK login profiles on VTY lines. Every command executed is logged.</span>
+            </div>
+            <div class="feature-item">
+                <strong>ACLs per Zone</strong>
+                <span>Each firewall interface has a dedicated inbound ACL (OUTSIDE_ACL, DSW1-IN, DSW2-IN, INSIDE_ACL). Traffic is explicitly permitted — everything else is denied by default.</span>
+            </div>
+            <div class="feature-item">
+                <strong>DHCP Snooping</strong>
+                <span>Enabled on VLANs 10, 20, 30, 40 across all access and distribution switches. Only trusted uplink ports can respond to DHCP requests. Access ports are rate-limited (5 packets/sec) to prevent DHCP starvation.</span>
+            </div>
+            <div class="feature-item">
+                <strong>STP Hardening</strong>
+                <span>Rapid-PVST across the network. BPDU Guard on all SW1/SW2 access ports stops rogue switches. Root Guard on DSW1/DSW2 downlinks prevents topology manipulation.</span>
+            </div>
+            <div class="feature-item">
+                <strong>HSRP Redundancy</strong>
+                <span>DSW1 and DSW2 run HSRP on every VLAN gateway, providing seamless failover. DSW1 is primary for VLANs 10/20, DSW2 is primary for VLANs 30/40 — balancing load across both paths.</span>
+            </div>
+            <div class="feature-item">
+                <strong>NetFlow &amp; IDS</strong>
+                <span>R1 exports flow records (source IP, destination IP, destination port, byte/packet counts) to the IDS at 192.168.150.2. Combined with syslog from the ASA, this gives the SOC full visibility into traffic patterns.</span>
+            </div>
+            <div class="feature-item">
+                <strong>NAT / PAT</strong>
+                <span>Static NAT maps the jump host, DMZ web server, and IDS to public IPs. PAT (overload) handles all other internal-to-external traffic through a shared pool (203.149.210.105–110).</span>
+            </div>
+            <div class="feature-item">
+                <strong>Slowloris Mitigation</strong>
+                <span>A dedicated class-map and policy-map on the ASA's OUTSIDE interface targets slow HTTP DoS attacks, protecting the DMZ web server from connection exhaustion.</span>
+            </div>
+            <div class="feature-item">
+                <strong>Port Hardening</strong>
+                <span>Trunk ports use a non-default native VLAN (998) to prevent VLAN hopping. DTP is disabled (switchport nonegotiate) on all trunks. Unused ports are left in default shutdown state.</span>
+            </div>
+            <div class="feature-item">
+                <strong>SSH-Only Management</strong>
+                <span>Telnet is disabled on every device. All remote access uses SSH version 2 with encrypted credentials. Console access also requires TACACS+ authentication.</span>
+            </div>
+        </div>
+
+        <!-- ───── Device Inventory ───── -->
+        <h4>Device Inventory</h4>
+
+        <table class="device-table">
+            <thead>
+                <tr>
+                    <th>Device</th>
+                    <th>Platform</th>
+                    <th>Role</th>
+                    <th>Key Protocols</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>R1</td>
+                    <td>Cisco C8200L</td>
+                    <td>Edge router</td>
+                    <td>OSPF, NAT/PAT, NetFlow</td>
+                </tr>
+                <tr>
+                    <td>ASA</td>
+                    <td>Cisco FPR-1010</td>
+                    <td>Firewall</td>
+                    <td>Zone-based ACLs, OSPF, Syslog</td>
+                </tr>
+                <tr>
+                    <td>DSW1</td>
+                    <td>Cisco C9300L</td>
+                    <td>Distribution switch</td>
+                    <td>HSRP, OSPF, DHCP, Root Guard</td>
+                </tr>
+                <tr>
+                    <td>DSW2</td>
+                    <td>Cisco C9300L</td>
+                    <td>Distribution switch</td>
+                    <td>HSRP, OSPF, DHCP, Root Guard</td>
+                </tr>
+                <tr>
+                    <td>SW1</td>
+                    <td>Cisco C9200L</td>
+                    <td>Access switch</td>
+                    <td>DHCP Snooping, BPDU Guard</td>
+                </tr>
+                <tr>
+                    <td>SW2</td>
+                    <td>Cisco C9200L</td>
+                    <td>Access switch</td>
+                    <td>DHCP Snooping, BPDU Guard</td>
+                </tr>
+                <tr>
+                    <td>SW3</td>
+                    <td>Cisco C9200L</td>
+                    <td>Access switch</td>
+                    <td>TACACS+ AAA</td>
+                </tr>
+                <tr>
+                    <td>SW4</td>
+                    <td>Cisco C9200L</td>
+                    <td>Access switch</td>
+                    <td>TACACS+ AAA</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- ───── My Role ───── -->
+        <h4>My Role</h4>
+        <p>
+            I was responsible for configuring the distribution and access layer switches — setting up VLAN trunking,
+            HSRP gateway redundancy, DHCP snooping, spanning-tree hardening (BPDU guard and root guard), and integrating
+            all switches with the TACACS+ server for centralised authentication. I also worked on the firewall ACLs
+            to control inter-zone traffic and tested the overall security posture of the network.
+        </p>
+
+        <!-- ───── Team ───── -->
+        <h4>Team</h4>
+        <p>Team 21 — "TheStiltons" &nbsp;|&nbsp; ICT2217 Network Security</p>
+
+    </div>
+</body>
+
+</html>

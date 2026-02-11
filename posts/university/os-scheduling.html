@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Operating System Project - CPU Scheduling Algorithms</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../../default.css">
+
+    <style type="text/css">
+        .img-container {
+            max-width: 600px;
+        }
+        
+        img {
+            width: 100%
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="nav-wrapper">
+
+        <!-- Link around dots-wrapper added after tutorial video -->
+        <a href="../../index.html">
+            <div class="dots-wrapper">
+                <div id="dot-1" class="browser-dot"></div>
+                <div id="dot-2" class="browser-dot"></div>
+                <div id="dot-3" class="browser-dot"></div>
+            </div>
+        </a>
+
+        <ul id="navigation">
+            <li><a href="../../index.html#contact">Contact</a></li>
+
+        </ul>
+    </div>
+
+    <div class="main-container">
+        <br>
+
+        <h3>Operating System Project - CPU Scheduling Algorithms</h3>
+
+        <p><strong>Last Updated:</strong> 11/02/2026</p>
+        <p><strong>Focus:</strong> Comparing different approaches to CPU process scheduling</p>
+
+        <h4>Project Overview</h4>
+        <p align="justify">This project explores multiple implementations of CPU scheduling algorithms, with an emphasis on optimizing key metrics like waiting time, turnaround time, and context switches. I implemented and compared five different scheduling approaches, each using different strategies to improve upon the basic Round Robin algorithm.</p>
+
+        <p align="justify">The core challenge in CPU scheduling is balancing fairness (all processes get CPU time) with efficiency (minimizing idle time and context switches). This project shows multiple solutions to that problem.</p>
+
+        <h4>Five Scheduling Approaches</h4>
+
+        <p align="justify"><strong>1. Priority-Based Round Robin with VLBT Detection (paper1.c)</strong> — This implementation adds priority levels to standard Round Robin. High-priority processes with very light burst times (VLBT) are executed immediately, reducing their wait time. Other processes follow a priority-adjusted time quantum system. The key innovation is detecting which processes are almost done and letting them finish first, reducing overall waiting time.</p>
+
+        <p align="justify"><strong>2. Dynamic Quantum Based on Max Burst Time (paper2.c)</strong> — Instead of a fixed time quantum, this algorithm calculates the quantum dynamically as 80% of the maximum burst time in the system. When all processes exceed the quantum, the quantum is increased to the maximum burst time. This adapts the scheduling to the actual workload characteristics.</p>
+
+        <p align="justify"><strong>3. Multi-Queue Light/Heavy Scheduling (paper3.c)</strong> — Processes are split into two queues based on whether their burst time is above or below the median. Light processes get a smaller time quantum (median), while heavy processes get a larger one (median of heavy tasks). This segregation allows each group to be optimized independently.</p>
+
+        <p align="justify"><strong>4. Improved Round Robin with Dynamic Mean-Based Quantum (paper4.c)</strong> — The time quantum for each round is calculated dynamically based on the mean burst time of processes currently in the ready queue. The formula is: TQ = (mean/2) + (mean/2)/burst_time. This provides finer-grained control and adapts as the queue changes.</p>
+
+        <p align="justify"><strong>5. Median-Based Time Slice Calculation (paper5.c)</strong> — This algorithm uses the median of remaining burst times in the ready queue to calculate the time slice. For initial scheduling, the median of processes arriving at the earliest time is used. This approach balances between light and heavy processes naturally through statistical measures.</p>
+
+        <h4>Key Performance Metrics Measured</h4>
+        <ul>
+            <li><strong>Waiting Time:</strong> How long a process waits before execution starts. Lower is better for responsiveness.</li>
+            <li><strong>Turnaround Time:</strong> Total time from arrival to completion. Indicates overall efficiency.</li>
+            <li><strong>Response Time:</strong> Delay until first execution. Critical for interactive systems.</li>
+            <li><strong>Context Switches:</strong> Number of times the CPU switches between processes. Fewer is better to reduce overhead.</li>
+        </ul>
+
+        <h4>Why This Matters</h4>
+        <p align="justify">Operating systems handle thousands of processes concurrently. A poorly designed scheduler can cause performance degradation, long wait times, and high CPU overhead from context switching. By comparing these five approaches, I explored how different heuristics (priority, burst time analysis, queue segregation, dynamic adjustment) affect real-world scheduling performance.</p>
+
+        <p align="justify">The implementations show that there's no one-size-fits-all solution. Different workloads benefit from different strategies. A workload with many short bursts benefits from VLBT detection, while a mixed workload might benefit from multi-queue segregation.</p>
+
+        <h4>Technical Implementation</h4>
+        <p align="justify">Each implementation is a complete C program that accepts user input for process arrival and burst times, simulates the scheduling algorithm, and outputs key metrics. The programs use dynamic time calculation, queue management, process state tracking, and statistical analysis to implement sophisticated scheduling logic.</p>
+
+        <p align="justify">The projects demonstrate proficiency in C programming, algorithm design, performance analysis, and system-level thinking about how operating systems manage computational resources.</p>
+
+        <h4>Deliverables</h4>
+        <p align="justify">Five complete C implementations with detailed comments, each handling real-world scheduling scenarios, calculating performance metrics, and providing insights into CPU utilization and process management efficiency.</p>
+
+    </div>
+
+</body>
+
+</html>
