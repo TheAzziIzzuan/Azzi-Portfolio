@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Privacy-Preserving Proximity Detection</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../../default.css">
+
+    <style type="text/css">
+        .img-container {
+            max-width: 600px;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .dual-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5em;
+            margin: 1.5em 0;
+        }
+
+        @media (max-width: 640px) {
+            .dual-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .surface-card {
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 1.2em;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .surface-card h4 {
+            margin: 0 0 0.5em 0;
+            font-size: 0.95em;
+        }
+
+        .surface-card p,
+        .surface-card li {
+            margin: 0;
+            font-size: 0.85em;
+            line-height: 1.6;
+        }
+
+        .surface-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0.5em 0 0;
+        }
+
+        .surface-card ul li {
+            padding: 0.3em 0;
+        }
+
+        .server-card {
+            border-left: 3px solid #42a5f5;
+        }
+
+        .server-card h4 {
+            color: #42a5f5;
+        }
+
+        .client-card {
+            border-left: 3px solid #66bb6a;
+        }
+
+        .client-card h4 {
+            color: #66bb6a;
+        }
+
+        .protocol-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5em;
+            margin: 1.5em 0;
+        }
+
+        @media (max-width: 640px) {
+            .protocol-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .protocol-card {
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 1.2em;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .protocol-card h4 {
+            margin: 0 0 0.5em 0;
+            font-size: 0.95em;
+            color: #ab47bc;
+        }
+
+        .protocol-card p {
+            margin: 0 0 0.5em;
+            font-size: 0.85em;
+            line-height: 1.6;
+        }
+
+        .step-list {
+            list-style: none;
+            padding: 0;
+            margin: 0.8em 0 0;
+            counter-reset: step;
+        }
+
+        .step-list li {
+            padding: 0.4em 0 0.4em 2em;
+            font-size: 0.82em;
+            line-height: 1.5;
+            position: relative;
+            counter-increment: step;
+        }
+
+        .step-list li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            width: 1.5em;
+            height: 1.5em;
+            border-radius: 50%;
+            background: rgba(171, 71, 188, 0.15);
+            color: #ab47bc;
+            text-align: center;
+            line-height: 1.5em;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+
+        .security-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5em 0;
+        }
+
+        .security-list li {
+            padding: 0.8em 1em;
+            margin-bottom: 0.6em;
+            border-left: 3px solid #42a5f5;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 0 6px 6px 0;
+            font-size: 0.88em;
+            line-height: 1.6;
+        }
+
+        .security-list li strong {
+            display: block;
+            margin-bottom: 0.2em;
+            font-size: 0.95em;
+        }
+
+        .math-block {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 1em 1.2em;
+            margin: 1em 0;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.85em;
+            line-height: 1.8;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 0.8em;
+            margin: 1.5em 0;
+        }
+
+        .tech-item {
+            padding: 0.8em 1em;
+            border-left: 3px solid #ab47bc;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 0 6px 6px 0;
+        }
+
+        .tech-item strong {
+            display: block;
+            margin-bottom: 0.3em;
+            font-size: 0.9em;
+        }
+
+        .tech-item span {
+            font-size: 0.82em;
+            line-height: 1.5;
+            opacity: 0.85;
+        }
+
+        code {
+            background: rgba(66, 165, 245, 0.12);
+            padding: 0.15em 0.4em;
+            border-radius: 4px;
+            font-size: 0.88em;
+            font-family: 'Roboto Mono', monospace;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="nav-wrapper">
+
+        <a href="../../index.html">
+            <div class="dots-wrapper">
+                <div id="dot-1" class="browser-dot"></div>
+                <div id="dot-2" class="browser-dot"></div>
+                <div id="dot-3" class="browser-dot"></div>
+            </div>
+        </a>
+
+    </div>
+
+    <div class="main-container">
+
+        <h3>Privacy-Preserving Proximity Detection</h3>
+        <p><em>Secure Location Proximity Using Paillier Homomorphic Encryption — ICT2205/ICT2213 Applied Cryptography</em></p>
+
+        <!-- ───── Overview ───── -->
+        <h4>Overview</h4>
+        <p>
+            A client-server application that allows users to check whether they are near a friend without
+            either party revealing their exact location. The system uses Paillier homomorphic encryption
+            to perform proximity computations entirely on encrypted data, while the server operates as a
+            zero-knowledge message relay with no access to any location information.
+        </p>
+
+        <!-- ───── Architecture ───── -->
+        <h4>Client-Server Architecture</h4>
+
+        <div class="dual-grid">
+            <div class="surface-card server-card">
+                <h4>Server — Zero-Knowledge Proxy</h4>
+                <p>
+                    TCP socket server that handles authentication, friend management, and encrypted message
+                    forwarding. The server never sees, processes, or stores any location data.
+                </p>
+                <ul>
+                    <li><strong>server-code.py</strong> — Multi-threaded connection handler</li>
+                    <li><strong>User Authentication</strong> — SHA-256 hashed password storage</li>
+                    <li><strong>Public Key Registry</strong> — Distributes Paillier public keys</li>
+                    <li><strong>Message Forwarding</strong> — Routes encrypted protocol messages</li>
+                    <li><strong>Data Persistence</strong> — JSON-based user/friendship storage</li>
+                </ul>
+            </div>
+            <div class="surface-card client-card">
+                <h4>Client — Cryptographic Engine</h4>
+                <p>
+                    All cryptographic operations happen client-side. Generates Paillier keypairs,
+                    encrypts location data, and performs/interprets homomorphic proximity computations.
+                </p>
+                <ul>
+                    <li><strong>client-code.py</strong> — ~1,360 lines, full protocol implementation</li>
+                    <li><strong>menu.py</strong> — Text-based UI with proximity result display</li>
+                    <li><strong>2048-bit Paillier Keys</strong> — Generated locally, never transmitted</li>
+                    <li><strong>Fernet Encryption</strong> — Password-derived key for private key storage</li>
+                    <li><strong>Threaded Listener</strong> — Async message handling during operations</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ───── Two Protocols ───── -->
+        <h4>Two Proximity Protocols</h4>
+
+        <div class="protocol-grid">
+            <div class="protocol-card">
+                <h4>Grid-Based Proximity</h4>
+                <p>
+                    Determines if two users are in the same grid cell (1000&times;1000 unit cells)
+                    using homomorphic subtraction and randomized linear combinations.
+                </p>
+                <ol class="step-list">
+                    <li>User encrypts their grid cell coordinates with their own public key</li>
+                    <li>Encrypted coordinates are sent to the friend via the server</li>
+                    <li>Friend computes <code>E(r1&middot;(grid_x - my_x) + r2&middot;(grid_y - my_y))</code> homomorphically</li>
+                    <li>Random blinding factor r3 added to prevent ciphertext pattern inference</li>
+                    <li>User decrypts: result = 0 means same cell, non-zero means different cell</li>
+                </ol>
+                <div class="math-block">
+                    E(a) + b = E(a + b) &nbsp;&mdash;&nbsp; Paillier additive property<br>
+                    c &middot; E(a) = E(c &middot; a) &nbsp;&mdash;&nbsp; Scalar multiplication<br>
+                    Result: E(r1&middot;&Delta;x + r2&middot;&Delta;y) + r3&middot;E(0)
+                </div>
+            </div>
+            <div class="protocol-card">
+                <h4>Euclidean Distance</h4>
+                <p>
+                    Determines if two users are within a specified distance threshold using the
+                    squared Euclidean distance formula, computed entirely on encrypted values.
+                </p>
+                <ol class="step-list">
+                    <li>User encrypts coordinates (x, y) and pre-computed norm &Vert;a&Vert;&sup2;</li>
+                    <li>Friend computes <code>&Vert;a-b&Vert;&sup2; = &Vert;a&Vert;&sup2; + &Vert;b&Vert;&sup2; - 2(a&middot;b)</code> homomorphically</li>
+                    <li>Random bit s flips comparison direction; random factor r scales the result</li>
+                    <li>User decrypts and checks the sign to determine if within threshold</li>
+                    <li>Binary result only: within threshold or not (~3-5% approximation)</li>
+                </ol>
+                <div class="math-block">
+                    &Vert;a-b&Vert;&sup2; = &Vert;a&Vert;&sup2; + &Vert;b&Vert;&sup2; - 2(a&middot;b)<br>
+                    s=0: r&middot;(dist&sup2; - thresh&sup2;) &nbsp;|&nbsp; s=1: r&middot;(thresh&sup2; - dist&sup2;)<br>
+                    Sign + s &rarr; nearby or not nearby
+                </div>
+            </div>
+        </div>
+
+        <!-- ───── Security Properties ───── -->
+        <h4>Security Properties</h4>
+
+        <ul class="security-list">
+            <li>
+                <strong>Zero Server Knowledge</strong>
+                The server cannot determine user locations even with full database access. All proximity data
+                is encrypted with user-owned public keys before transmission. The server only forwards opaque
+                ciphertext without inspection.
+            </li>
+            <li>
+                <strong>Mutual Location Privacy</strong>
+                Neither party learns the other's exact coordinates. The grid protocol reveals only same-cell
+                or different-cell; the Euclidean protocol reveals only within-threshold or not. Random factors
+                r1, r2, r3 (grid) and s, r (Euclidean) prevent any inference beyond the binary result.
+            </li>
+            <li>
+                <strong>HMAC Message Integrity</strong>
+                Every request includes an HMAC-SHA256 tag computed with a PBKDF2-derived key (100,000
+                iterations, username as salt). The server and client verify integrity to detect tampering.
+            </li>
+            <li>
+                <strong>Replay Attack Prevention</strong>
+                All messages carry timestamps. Recipients check timestamp freshness to reject replayed
+                messages, preventing adversaries from re-sending captured protocol exchanges.
+            </li>
+            <li>
+                <strong>Private Key Protection</strong>
+                Private keys are generated locally and never transmitted. They are stored encrypted with
+                Fernet using a password-derived key (PBKDF2, 100K iterations), ensuring keys at rest are
+                protected even if the filesystem is compromised.
+            </li>
+        </ul>
+
+        <!-- ───── Features ───── -->
+        <h4>Application Features</h4>
+
+        <div class="tech-grid">
+            <div class="tech-item">
+                <strong>User Registration</strong>
+                <span>Generates 2048-bit Paillier keypair, stores encrypted private key locally, registers public key with server</span>
+            </div>
+            <div class="tech-item">
+                <strong>Secure Login</strong>
+                <span>SHA-256 password hashing, PBKDF2-derived HMAC key, automatic key loading and decryption</span>
+            </div>
+            <div class="tech-item">
+                <strong>Friend Management</strong>
+                <span>Add friends, view online/offline status, select friends for proximity checks</span>
+            </div>
+            <div class="tech-item">
+                <strong>Location Updates</strong>
+                <span>Set coordinates (0-99999), stored locally only, never sent to server in plaintext</span>
+            </div>
+            <div class="tech-item">
+                <strong>Grid Proximity Check</strong>
+                <span>Same-cell detection via homomorphic subtraction with randomized masking and blinding</span>
+            </div>
+            <div class="tech-item">
+                <strong>Euclidean Distance Check</strong>
+                <span>Threshold-based distance comparison via squared distance formula with random sign flip</span>
+            </div>
+        </div>
+
+        <!-- ───── Tech Stack ───── -->
+        <h4>Tech Stack</h4>
+
+        <div class="tech-grid">
+            <div class="tech-item">
+                <strong>Python 3</strong>
+                <span>Core language for both client and server implementations</span>
+            </div>
+            <div class="tech-item">
+                <strong>python-paillier (phe)</strong>
+                <span>Paillier homomorphic encryption library for additive operations on ciphertexts</span>
+            </div>
+            <div class="tech-item">
+                <strong>cryptography (Fernet)</strong>
+                <span>Symmetric encryption for private key storage with password-derived keys</span>
+            </div>
+            <div class="tech-item">
+                <strong>TCP Sockets</strong>
+                <span>Multi-threaded client-server communication with JSON message protocol</span>
+            </div>
+            <div class="tech-item">
+                <strong>HMAC-SHA256 / PBKDF2</strong>
+                <span>Message integrity verification and secure key derivation (100K iterations)</span>
+            </div>
+            <div class="tech-item">
+                <strong>Threading</strong>
+                <span>Concurrent client connections and async message listeners</span>
+            </div>
+        </div>
+
+        <!-- ───── Team ───── -->
+        <h4>Team</h4>
+        <p>Applied Cryptography — Group 18</p>
+        <p><a href="https://github.com/ryangan28/Crypto" target="_blank">View on GitHub &rarr;</a></p>
+
+    </div>
+</body>
+
+</html>

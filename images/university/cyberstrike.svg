@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d1b2a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#007bff" />
+      <stop offset="100%" style="stop-color:#00d4ff" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff4444" />
+      <stop offset="100%" style="stop-color:#ff8800" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bgGrad)" rx="12"/>
+
+  <!-- Grid pattern -->
+  <g opacity="0.05" stroke="#007bff">
+    <line x1="0" y1="50" x2="400" y2="50"/>
+    <line x1="0" y1="100" x2="400" y2="100"/>
+    <line x1="0" y1="150" x2="400" y2="150"/>
+    <line x1="0" y1="200" x2="400" y2="200"/>
+    <line x1="0" y1="250" x2="400" y2="250"/>
+    <line x1="80" y1="0" x2="80" y2="300"/>
+    <line x1="160" y1="0" x2="160" y2="300"/>
+    <line x1="240" y1="0" x2="240" y2="300"/>
+    <line x1="320" y1="0" x2="320" y2="300"/>
+  </g>
+
+  <!-- Shield icon -->
+  <g transform="translate(200,88)">
+    <!-- Shield body -->
+    <path d="M0,-50 L38,-35 L38,10 C38,35 20,52 0,60 C-20,52 -38,35 -38,10 L-38,-35 Z" 
+          fill="none" stroke="url(#blueGrad)" stroke-width="2.5" opacity="0.9"/>
+    <path d="M0,-42 L30,-30 L30,8 C30,28 16,42 0,48 C-16,42 -30,28 -30,8 L-30,-30 Z" 
+          fill="rgba(0,123,255,0.08)"/>
+    
+    <!-- Sword cross -->
+    <line x1="0" y1="-28" x2="0" y2="30" stroke="#00d4ff" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="-16" y1="-6" x2="16" y2="-6" stroke="#00d4ff" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Sword handle -->
+    <rect x="-3" y="26" width="6" height="8" rx="1" fill="#00d4ff"/>
+  </g>
+
+  <!-- Title -->
+  <text x="200" y="175" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-weight="900" font-size="28">CyberStrike</text>
+
+  <!-- Subtitle -->
+  <text x="200" y="198" text-anchor="middle" fill="#5ab4ff" font-family="Arial, sans-serif" font-size="10" letter-spacing="3">WEB VULNERABILITY SCANNER</text>
+
+  <!-- Scan module indicators -->
+  <g transform="translate(78,228)">
+    <!-- Module boxes -->
+    <rect x="0" y="0" width="44" height="28" rx="4" fill="rgba(0,123,255,0.1)" stroke="rgba(0,123,255,0.3)" stroke-width="0.8"/>
+    <text x="22" y="11" text-anchor="middle" fill="#5ab4ff" font-family="Arial" font-size="5.5">SCAN</text>
+    <text x="22" y="21" text-anchor="middle" fill="#888" font-family="Arial" font-size="5">Website</text>
+
+    <rect x="52" y="0" width="44" height="28" rx="4" fill="rgba(0,123,255,0.1)" stroke="rgba(0,123,255,0.3)" stroke-width="0.8"/>
+    <text x="74" y="11" text-anchor="middle" fill="#5ab4ff" font-family="Arial" font-size="5.5">IDOR</text>
+    <text x="74" y="21" text-anchor="middle" fill="#888" font-family="Arial" font-size="5">Scanner</text>
+
+    <rect x="104" y="0" width="44" height="28" rx="4" fill="rgba(0,123,255,0.1)" stroke="rgba(0,123,255,0.3)" stroke-width="0.8"/>
+    <text x="126" y="11" text-anchor="middle" fill="#5ab4ff" font-family="Arial" font-size="5.5">INJECT</text>
+    <text x="126" y="21" text-anchor="middle" fill="#888" font-family="Arial" font-size="5">12+ CWEs</text>
+
+    <rect x="156" y="0" width="44" height="28" rx="4" fill="rgba(255,68,68,0.1)" stroke="rgba(255,68,68,0.3)" stroke-width="0.8"/>
+    <text x="178" y="11" text-anchor="middle" fill="#ff6b6b" font-family="Arial" font-size="5.5">SSRF</text>
+    <text x="178" y="21" text-anchor="middle" fill="#888" font-family="Arial" font-size="5">Detection</text>
+
+    <rect x="208" y="0" width="44" height="28" rx="4" fill="rgba(255,136,0,0.1)" stroke="rgba(255,136,0,0.3)" stroke-width="0.8"/>
+    <text x="230" y="11" text-anchor="middle" fill="#ff8800" font-family="Arial" font-size="5.5">CRYPTO</text>
+    <text x="230" y="21" text-anchor="middle" fill="#888" font-family="Arial" font-size="5">Failures</text>
+  </g>
+
+  <!-- Decorative scan line -->
+  <line x1="60" y1="272" x2="340" y2="272" stroke="url(#blueGrad)" stroke-width="1" opacity="0.3"/>
+  <circle cx="60" cy="272" r="2" fill="#007bff" opacity="0.6"/>
+  <circle cx="340" cy="272" r="2" fill="#00d4ff" opacity="0.6"/>
+
+  <!-- Chrome extension badge -->
+  <g transform="translate(332,20)">
+    <rect x="0" y="0" width="52" height="18" rx="9" fill="rgba(0,123,255,0.15)" stroke="rgba(0,123,255,0.3)" stroke-width="0.6"/>
+    <text x="26" y="12" text-anchor="middle" fill="#5ab4ff" font-family="Arial" font-size="7">Chrome</text>
+  </g>
+
+  <!-- Vulnerable site badge -->
+  <g transform="translate(16,20)">
+    <rect x="0" y="0" width="52" height="18" rx="9" fill="rgba(255,68,68,0.15)" stroke="rgba(255,68,68,0.3)" stroke-width="0.6"/>
+    <text x="26" y="12" text-anchor="middle" fill="#ff6b6b" font-family="Arial" font-size="7">PHP Test</text>
+  </g>
+</svg>

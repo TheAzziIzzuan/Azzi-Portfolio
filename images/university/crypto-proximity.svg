@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="lock-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ab47bc"/>
+      <stop offset="100%" style="stop-color:#7b1fa2"/>
+    </linearGradient>
+    <linearGradient id="wave" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#42a5f5;stop-opacity:0.3"/>
+      <stop offset="50%" style="stop-color:#66bb6a;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#42a5f5;stop-opacity:0.3"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)" rx="12"/>
+
+  <!-- Grid lines -->
+  <g stroke="#ffffff" stroke-opacity="0.04" stroke-width="1">
+    <line x1="0" y1="60" x2="400" y2="60"/>
+    <line x1="0" y1="120" x2="400" y2="120"/>
+    <line x1="0" y1="180" x2="400" y2="180"/>
+    <line x1="0" y1="240" x2="400" y2="240"/>
+    <line x1="80" y1="0" x2="80" y2="300"/>
+    <line x1="160" y1="0" x2="160" y2="300"/>
+    <line x1="240" y1="0" x2="240" y2="300"/>
+    <line x1="320" y1="0" x2="320" y2="300"/>
+  </g>
+
+  <!-- Encrypted wave connection -->
+  <path d="M 110 150 Q 160 110, 200 130 Q 240 150, 290 150" stroke="url(#wave)" stroke-width="3" fill="none" stroke-dasharray="8,4"/>
+  <path d="M 110 150 Q 160 190, 200 170 Q 240 150, 290 150" stroke="url(#wave)" stroke-width="3" fill="none" stroke-dasharray="8,4"/>
+
+  <!-- User A - circle with location dot -->
+  <circle cx="110" cy="150" r="32" fill="none" stroke="#42a5f5" stroke-width="2" stroke-opacity="0.6"/>
+  <circle cx="110" cy="150" r="24" fill="#42a5f5" fill-opacity="0.15"/>
+  <circle cx="110" cy="143" r="7" fill="#42a5f5"/>
+  <path d="M 96 162 Q 110 152, 124 162" stroke="#42a5f5" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- Location pin A -->
+  <path d="M 110 118 l -5 -8 a 6 6 0 1 1 10 0 z" fill="#42a5f5" fill-opacity="0.7"/>
+  <circle cx="110" cy="108" r="2" fill="#1a1a2e"/>
+
+  <!-- Central lock icon -->
+  <rect x="185" y="132" width="30" height="24" rx="4" fill="url(#lock-grad)"/>
+  <path d="M 193 132 v -8 a 7 7 0 0 1 14 0 v 8" stroke="#ab47bc" stroke-width="2.5" fill="none"/>
+  <circle cx="200" cy="146" r="3" fill="#ffffff"/>
+  <line x1="200" y1="149" x2="200" y2="153" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- User B - circle with location dot -->
+  <circle cx="290" cy="150" r="32" fill="none" stroke="#66bb6a" stroke-width="2" stroke-opacity="0.6"/>
+  <circle cx="290" cy="150" r="24" fill="#66bb6a" fill-opacity="0.15"/>
+  <circle cx="290" cy="143" r="7" fill="#66bb6a"/>
+  <path d="M 276 162 Q 290 152, 304 162" stroke="#66bb6a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- Location pin B -->
+  <path d="M 290 118 l -5 -8 a 6 6 0 1 1 10 0 z" fill="#66bb6a" fill-opacity="0.7"/>
+  <circle cx="290" cy="108" r="2" fill="#1a1a2e"/>
+
+  <!-- Floating ciphertext symbols -->
+  <text x="155" y="128" fill="#ab47bc" fill-opacity="0.5" font-family="monospace" font-size="10">E(x)</text>
+  <text x="228" y="128" fill="#ab47bc" fill-opacity="0.5" font-family="monospace" font-size="10">E(y)</text>
+  <text x="175" y="185" fill="#ffffff" fill-opacity="0.3" font-family="monospace" font-size="9">HE</text>
+  <text x="205" y="185" fill="#ffffff" fill-opacity="0.3" font-family="monospace" font-size="9">ops</text>
+
+  <!-- Binary result indicator -->
+  <rect x="172" y="195" width="56" height="18" rx="9" fill="#66bb6a" fill-opacity="0.15" stroke="#66bb6a" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="200" y="208" text-anchor="middle" fill="#66bb6a" font-family="monospace" font-size="9" font-weight="bold">NEARBY</text>
+
+  <!-- Title -->
+  <text x="200" y="260" text-anchor="middle" fill="#ffffff" font-family="'Segoe UI', sans-serif" font-size="16" font-weight="bold" letter-spacing="1">PROXIMITY DETECTION</text>
+  <text x="200" y="278" text-anchor="middle" fill="#ab47bc" font-family="monospace" font-size="10" letter-spacing="0.5">Paillier Homomorphic Encryption</text>
+</svg>

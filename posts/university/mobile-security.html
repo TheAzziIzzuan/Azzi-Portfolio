@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mobile Security - Trojanized Android App</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../../default.css">
+
+    <style type="text/css">
+        .img-container {
+            max-width: 600px;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .dual-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5em;
+            margin: 1.5em 0;
+        }
+
+        @media (max-width: 640px) {
+            .dual-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .surface-card {
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 1.2em;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .surface-card h4 {
+            margin: 0 0 0.5em 0;
+            font-size: 0.95em;
+        }
+
+        .surface-card p {
+            margin: 0;
+            font-size: 0.85em;
+            line-height: 1.6;
+        }
+
+        .legit {
+            border-left: 3px solid #66bb6a;
+        }
+
+        .legit h4 {
+            color: #66bb6a;
+        }
+
+        .malicious {
+            border-left: 3px solid #ef5350;
+        }
+
+        .malicious h4 {
+            color: #ef5350;
+        }
+
+        .attack-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5em 0;
+        }
+
+        .attack-list li {
+            padding: 0.8em 1em;
+            border-left: 3px solid #ef5350;
+            margin-bottom: 0.6em;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 0 6px 6px 0;
+            font-size: 0.88em;
+            line-height: 1.6;
+        }
+
+        .attack-list li strong {
+            display: block;
+            margin-bottom: 0.2em;
+            font-size: 0.95em;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 0.8em;
+            margin: 1.5em 0;
+        }
+
+        .tech-item {
+            padding: 0.8em 1em;
+            border-left: 3px solid #ab47bc;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 0 6px 6px 0;
+        }
+
+        .tech-item strong {
+            display: block;
+            margin-bottom: 0.3em;
+            font-size: 0.9em;
+        }
+
+        .tech-item span {
+            font-size: 0.82em;
+            line-height: 1.5;
+            opacity: 0.85;
+        }
+
+        code {
+            background: rgba(171, 71, 188, 0.12);
+            padding: 0.15em 0.4em;
+            border-radius: 4px;
+            font-size: 0.88em;
+            font-family: 'Roboto Mono', monospace;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="nav-wrapper">
+
+        <a href="../../index.html">
+            <div class="dots-wrapper">
+                <div id="dot-1" class="browser-dot"></div>
+                <div id="dot-2" class="browser-dot"></div>
+                <div id="dot-3" class="browser-dot"></div>
+            </div>
+        </a>
+
+    </div>
+
+    <div class="main-container">
+
+        <h3>Mobile Security</h3>
+        <p><em>Building a Trojanized Android App to Demonstrate Mobile Threats</em></p>
+
+        <!-- ───── Overview ───── -->
+        <h4>Overview</h4>
+        <p>
+            A group project where we built a fully functional Android social media application that secretly contains
+            multiple malicious payloads — hidden behind a legitimate-looking interface. The goal was to demonstrate how
+            a trojanized app can abuse Android permissions and APIs to steal sensitive data without the user realising it.
+        </p>
+        <p>
+            On the surface, the app is an Instagram-style platform: users sign up, post photos and videos, browse an
+            activity feed, request events, leave reviews, follow other users, and manage their profile. Underneath,
+            the app silently extracts contacts, tracks GPS location, logs device sensor data, and can send SMS messages —
+            all while appearing completely normal to the end user.
+        </p>
+
+        <!-- ───── Legitimate vs Malicious ───── -->
+        <h4>Two Faces of the App</h4>
+
+        <div class="dual-grid">
+            <div class="surface-card legit">
+                <h4>What the User Sees</h4>
+                <p>
+                    A polished social media app with Firebase authentication, a scrollable activity feed with posts
+                    and likes, a camera for capturing photos and recording videos, gallery-based media upload,
+                    an events system with admin approval workflow, user profiles with image/video grids, a follower
+                    system, push notifications, and a review/rating feature for events.
+                </p>
+            </div>
+            <div class="surface-card malicious">
+                <h4>What Actually Happens</h4>
+                <p>
+                    Behind the scenes, the app harvests the user's entire contact list and uploads it to Firestore,
+                    tracks their GPS coordinates on a timer and exfiltrates them to a remote database, runs a
+                    foreground service that logs accelerometer and gyroscope data to an external HTTP endpoint,
+                    and has the ability to send SMS messages programmatically — all triggered by normal-looking
+                    app interactions.
+                </p>
+            </div>
+        </div>
+
+        <!-- ───── Malicious Features ───── -->
+        <h4>Hidden Malicious Features</h4>
+
+        <ul class="attack-list">
+            <li>
+                <strong>Contact Exfiltration</strong>
+                When the user grants the <code>READ_CONTACTS</code> permission (prompted with a social-engineering
+                excuse like "find friends"), the <code>extractContacts()</code> method in
+                <code>ActivityFeedActivity</code> silently reads every contact name and phone number via
+                <code>ContactsContract</code> and bulk-uploads them to a Firestore collection.
+            </li>
+            <li>
+                <strong>GPS Location Tracking</strong>
+                <code>AdminEventReviewActivity</code> requests <code>ACCESS_FINE_LOCATION</code> with a misleading
+                dialog: "Enable location to see local events and bookings near you faster." Once granted, a
+                <code>Timer</code> calls <code>startStealingLocation()</code> on a loop, feeding the user's
+                latitude, longitude, and email into Firestore every few seconds.
+            </li>
+            <li>
+                <strong>Sensor Data Logging</strong>
+                <code>SensorLoggingService</code> runs as a persistent foreground service, registering listeners
+                on the accelerometer and gyroscope. Sensor readings are batched into JSON arrays and POSTed to
+                an external HTTP endpoint — enabling motion profiling and activity inference on the attacker's server.
+            </li>
+            <li>
+                <strong>Silent SMS Sending</strong>
+                <code>SmsHelper</code> uses Android's <code>SmsManager</code> to send text messages to arbitrary
+                numbers programmatically. This could be weaponised for premium-rate SMS fraud, spam distribution,
+                or further social engineering attacks against the victim's contacts.
+            </li>
+        </ul>
+
+        <!-- ───── Social Engineering Techniques ───── -->
+        <h4>Social Engineering Techniques</h4>
+        <p>
+            The malicious features are carefully disguised behind legitimate-sounding permission requests and
+            normal UI flows:
+        </p>
+        <ul class="attack-list">
+            <li>
+                <strong>Permission Justification</strong>
+                Contact access is framed as "find friends." Location access claims to show "local events near you."
+                The user sees a reasonable explanation and taps "Allow" without suspecting data theft.
+            </li>
+            <li>
+                <strong>Trigger Points</strong>
+                Malicious code is triggered by normal user actions — opening the activity feed starts contact extraction,
+                navigating to the event admin page starts location tracking. There's no visible indicator that
+                anything abnormal is happening.
+            </li>
+            <li>
+                <strong>Foreground Service Camouflage</strong>
+                The sensor logging service runs as a foreground service with a persistent notification — which on
+                Android looks like a normal background feature of the app, not something suspicious.
+            </li>
+        </ul>
+
+        <!-- ───── Tech Stack ───── -->
+        <h4>Tech Stack</h4>
+
+        <div class="tech-grid">
+            <div class="tech-item">
+                <strong>Android (Java)</strong>
+                <span>Native Android app using CameraX, ExoPlayer, RecyclerView, Glide, GestureDetector</span>
+            </div>
+            <div class="tech-item">
+                <strong>Firebase Suite</strong>
+                <span>Auth (email/password), Firestore (data + exfiltrated data), Storage (media uploads)</span>
+            </div>
+            <div class="tech-item">
+                <strong>Android APIs Abused</strong>
+                <span>ContactsContract, FusedLocationProviderClient, SensorManager, SmsManager</span>
+            </div>
+            <div class="tech-item">
+                <strong>Admin Features</strong>
+                <span>User ban/unban system, event approval workflow, review moderation panel</span>
+            </div>
+        </div>
+
+        <!-- ───── App Features ───── -->
+        <h4>Legitimate App Features</h4>
+        <div class="tech-grid">
+            <div class="tech-item">
+                <strong>Reels &amp; Camera</strong>
+                <span>CameraX integration for photo capture and video recording, gallery browser, ExoPlayer for video preview</span>
+            </div>
+            <div class="tech-item">
+                <strong>Activity Feed</strong>
+                <span>Scrollable post feed with likes, comments, and swipe-to-refresh — modelled after Instagram</span>
+            </div>
+            <div class="tech-item">
+                <strong>Events System</strong>
+                <span>Users request events (name, date, time, description), admins approve/reject/complete, users leave reviews with star ratings</span>
+            </div>
+            <div class="tech-item">
+                <strong>Profiles &amp; Social</strong>
+                <span>User profiles with image/video grid tabs, follower counts, post counts, logout, and user search</span>
+            </div>
+        </div>
+
+        <!-- ───── My Role ───── -->
+        <h4>My Role</h4>
+        <p>
+            I worked on integrating the malicious payloads into the app's normal user flows — implementing the
+            contact exfiltration logic that triggers on the activity feed, the GPS tracking timer embedded in the
+            event review page, and the sensor logging foreground service. I also contributed to the legitimate
+            front-end features to make the app convincing enough that a real user wouldn't suspect anything.
+        </p>
+
+        <!-- ───── Team ───── -->
+        <h4>Team</h4>
+        <p>Group 5 &nbsp;|&nbsp; Mobile Security</p>
+        <p><a href="https://github.com/jonderic/MobSec_Group5" target="_blank">View on GitHub &rarr;</a></p>
+
+    </div>
+</body>
+
+</html>

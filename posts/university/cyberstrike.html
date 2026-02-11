@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CyberStrike — Web Vulnerability Scanner</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../../default.css">
+
+    <style type="text/css">
+        .img-container {
+            max-width: 600px;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .dual-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5em;
+            margin: 1.5em 0;
+        }
+
+        @media (max-width: 640px) {
+            .dual-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .surface-card {
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 1.2em;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .surface-card h4 {
+            margin: 0 0 0.5em 0;
+            font-size: 0.95em;
+        }
+
+        .surface-card p,
+        .surface-card li {
+            margin: 0;
+            font-size: 0.85em;
+            line-height: 1.6;
+        }
+
+        .surface-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0.5em 0 0;
+        }
+
+        .surface-card ul li {
+            padding: 0.3em 0;
+        }
+
+        .extension-card {
+            border-left: 3px solid #42a5f5;
+        }
+
+        .extension-card h4 {
+            color: #42a5f5;
+        }
+
+        .website-card {
+            border-left: 3px solid #ef5350;
+        }
+
+        .website-card h4 {
+            color: #ef5350;
+        }
+
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 0.8em;
+            margin: 1.5em 0;
+        }
+
+        .module-item {
+            padding: 0.8em 1em;
+            border-left: 3px solid #42a5f5;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 0 6px 6px 0;
+        }
+
+        .module-item strong {
+            display: block;
+            margin-bottom: 0.3em;
+            font-size: 0.9em;
+        }
+
+        .module-item span {
+            font-size: 0.82em;
+            line-height: 1.5;
+            opacity: 0.85;
+        }
+
+        .vuln-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5em 0;
+        }
+
+        .vuln-list li {
+            padding: 0.8em 1em;
+            margin-bottom: 0.6em;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 0 6px 6px 0;
+            font-size: 0.88em;
+            line-height: 1.6;
+        }
+
+        .vuln-list li strong {
+            display: block;
+            margin-bottom: 0.2em;
+            font-size: 0.95em;
+        }
+
+        .vuln-list li.critical {
+            border-left: 3px solid #ef5350;
+        }
+
+        .vuln-list li.high {
+            border-left: 3px solid #ffa726;
+        }
+
+        .vuln-list li.medium {
+            border-left: 3px solid #ffee58;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 0.8em;
+            margin: 1.5em 0;
+        }
+
+        .tech-item {
+            padding: 0.8em 1em;
+            border-left: 3px solid #ab47bc;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 0 6px 6px 0;
+        }
+
+        .tech-item strong {
+            display: block;
+            margin-bottom: 0.3em;
+            font-size: 0.9em;
+        }
+
+        .tech-item span {
+            font-size: 0.82em;
+            line-height: 1.5;
+            opacity: 0.85;
+        }
+
+        code {
+            background: rgba(66, 165, 245, 0.12);
+            padding: 0.15em 0.4em;
+            border-radius: 4px;
+            font-size: 0.88em;
+            font-family: 'Roboto Mono', monospace;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="nav-wrapper">
+
+        <a href="../../index.html">
+            <div class="dots-wrapper">
+                <div id="dot-1" class="browser-dot"></div>
+                <div id="dot-2" class="browser-dot"></div>
+                <div id="dot-3" class="browser-dot"></div>
+            </div>
+        </a>
+
+    </div>
+
+    <div class="main-container">
+
+        <h3>CyberStrike</h3>
+        <p><em>Chrome Extension for Automated Web Vulnerability Scanning &amp; Penetration Testing</em></p>
+
+        <!-- ───── Overview ───── -->
+        <h4>Overview</h4>
+        <p>
+            A dual-component security project combining a Chrome browser extension for automated web vulnerability
+            scanning with a deliberately vulnerable PHP/MySQL test website for hands-on security training. The extension
+            provides 6 OWASP-aligned scanning modules covering the most common web application vulnerabilities, while the
+            test website serves as a controlled environment to validate each scanner's detection capabilities.
+        </p>
+
+        <!-- ───── Architecture ───── -->
+        <h4>Dual-Component Architecture</h4>
+
+        <div class="dual-grid">
+            <div class="surface-card extension-card">
+                <h4>Chrome Extension (Manifest V3)</h4>
+                <p>
+                    Tabbed popup UI with 6 scanning modules, a background service worker for real-time network
+                    monitoring, and Acorn.js for JavaScript static analysis.
+                </p>
+                <ul>
+                    <li><strong>popup.html</strong> — Main UI with 6 tabbed scanning modules</li>
+                    <li><strong>popup.js</strong> — Core scanning engine (~1,100+ lines)</li>
+                    <li><strong>background.js</strong> — Network interception &amp; SSRF rules</li>
+                    <li><strong>common.txt</strong> — 4,700+ path wordlist for brute-forcing</li>
+                    <li><strong>acorn.js</strong> — JavaScript parser for code analysis</li>
+                </ul>
+            </div>
+            <div class="surface-card website-card">
+                <h4>Vulnerable Test Website (PHP/MySQL)</h4>
+                <p>
+                    Deliberately insecure web application designed to be detected by the extension's scanning modules.
+                    Hosted locally via Node.js/Express.
+                </p>
+                <ul>
+                    <li><strong>login.php</strong> — SQL Injection via GET parameters</li>
+                    <li><strong>signup.php</strong> — Credentials exposed in URL</li>
+                    <li><strong>profile.php</strong> — IDOR — unvalidated user ID in query</li>
+                    <li><strong>download.php</strong> — File download without sanitization</li>
+                    <li><strong>admin.php</strong> — Hardcoded credentials + SSRF</li>
+                    <li><strong>public_api.php</strong> — Exposed DB credentials via API</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ───── 6 Scanning Modules ───── -->
+        <h4>6 Scanning Modules</h4>
+
+        <div class="module-grid">
+            <div class="module-item">
+                <strong>General Website Scan</strong>
+                <span>Full reconnaissance — IP geolocation, DNS records, WHOIS data, SSL certificate details, and HTTP header analysis in one click.</span>
+            </div>
+            <div class="module-item">
+                <strong>Broken Access Control</strong>
+                <span>Directory brute-forcing with 4,700+ path wordlist, numeric iteration scanning, and file extension probing (.txt, .html, .php).</span>
+            </div>
+            <div class="module-item">
+                <strong>IDOR Scanner</strong>
+                <span>Insecure Direct Object Reference testing — iterates through user IDs, file paths, and resource identifiers to detect authorization bypass.</span>
+            </div>
+            <div class="module-item">
+                <strong>Cryptographic Failures</strong>
+                <span>Detects hardcoded API keys (Google, Stripe, AWS), secret tokens in headers, and sensitive data transmitted over plaintext HTTP. CWE-319, CWE-321, CWE-523.</span>
+            </div>
+            <div class="module-item">
+                <strong>Injection Vulnerabilities</strong>
+                <span>Tests for 12+ injection types with automated attack payloads — SQL, XSS, command, LDAP, XML/XPath, CRLF injection. CWE-89, CWE-79, CWE-77/78, CWE-90, CWE-91, CWE-113.</span>
+            </div>
+            <div class="module-item">
+                <strong>SSRF Detection</strong>
+                <span>Server-Side Request Forgery scanning — probes cloud metadata endpoints (AWS, GCP, Oracle), internal services, Kubernetes, Docker, and database ports.</span>
+            </div>
+        </div>
+
+        <!-- ───── Embedded Vulnerabilities ───── -->
+        <h4>Embedded Vulnerabilities in Test Website</h4>
+
+        <ul class="vuln-list">
+            <li class="critical">
+                <strong>SQL Injection — No Prepared Statements (CRITICAL)</strong>
+                User input directly concatenated into SQL queries in <code>login.php</code> and <code>signup.php</code>.
+                Login uses GET method exposing credentials in URL. No input sanitization or parameterized queries.
+            </li>
+            <li class="critical">
+                <strong>Server-Side Request Forgery / SSRF (CRITICAL)</strong>
+                <code>admin.php</code> accepts arbitrary URLs via GET parameter and fetches them with
+                <code>file_get_contents()</code> — enables access to internal services and cloud metadata endpoints.
+            </li>
+            <li class="high">
+                <strong>Insecure Direct Object Reference / IDOR (HIGH)</strong>
+                <code>profile.php</code> passes user ID directly into SQL query without authorization checks. Any user
+                can access any profile by changing the <code>?id=</code> parameter.
+            </li>
+            <li class="high">
+                <strong>Hardcoded Admin Credentials (HIGH)</strong>
+                Admin username and password hardcoded in plain text in <code>admin.php</code>. The
+                <code>public_api.php</code> endpoint exposes database host, user, password, and admin credentials via
+                JSON response.
+            </li>
+            <li class="high">
+                <strong>Sensitive Data in Cookies (HIGH)</strong>
+                User role, ID, and a base64-encoded "secret" stored in cookies without Secure or HttpOnly flags in
+                <code>mainpage.php</code>. Cookie-based authentication with no session management.
+            </li>
+            <li class="medium">
+                <strong>Credentials in URL / GET Method (MEDIUM)</strong>
+                Both login and signup forms use GET method, exposing username and password in the URL, browser history,
+                server logs, and referrer headers.
+            </li>
+        </ul>
+
+        <!-- ───── Background Monitoring ───── -->
+        <h4>Real-Time Background Monitoring</h4>
+        <p>
+            The extension's background service worker continuously monitors network traffic using Chrome's
+            <code>webRequest</code> API and <code>declarativeNetRequest</code> rules:
+        </p>
+
+        <div class="module-grid">
+            <div class="module-item">
+                <strong>Cleartext Credential Detection</strong>
+                <span>Intercepts HTTP requests containing sensitive fields (username, password, token, apikey) in
+                    GET/POST data. Flags login vs. signup contexts. CWE-319 / CWE-523.</span>
+            </div>
+            <div class="module-item">
+                <strong>Hardcoded Secret Detection</strong>
+                <span>Inspects response headers (Set-Cookie, Authorization) for leaked secrets, API keys, and
+                    authentication tokens in real-time. CWE-321.</span>
+            </div>
+            <div class="module-item">
+                <strong>SSRF Protection Rules</strong>
+                <span>Declarative net request rules blocking requests to internal IPs (127.0.0.1, 192.168.x, 10.0.x,
+                    169.254.x, ::1). Monitors sensitive path access patterns.</span>
+            </div>
+        </div>
+
+        <!-- ───── Attack Payloads ───── -->
+        <h4>Automated Attack Payloads</h4>
+        <p>
+            After detecting injection vulnerabilities, the extension can auto-inject attack payloads into form
+            fields and submit them:
+        </p>
+
+        <ul class="vuln-list">
+            <li class="critical">
+                <strong>SQL Injection (CWE-89)</strong>
+                Payload: <code>1' OR '1'='1</code> — Classic authentication bypass injected into both username and
+                password fields. Auto-submits the form after injection.
+            </li>
+            <li class="high">
+                <strong>LDAP Injection (CWE-90)</strong>
+                Payload: <code>*admin)(|(uid=*))</code> — Exploits LDAP query structure to extract all user entries by
+                manipulating the filter logic.
+            </li>
+            <li class="high">
+                <strong>XML Injection (CWE-91)</strong>
+                Payload: <code>admin' or '1'='1</code> — Blind XPath injection targeting XML-based authentication to
+                bypass login controls.
+            </li>
+        </ul>
+
+        <!-- ───── Tech Stack ───── -->
+        <h4>Tech Stack</h4>
+
+        <div class="tech-grid">
+            <div class="tech-item">
+                <strong>Chrome Manifest V3</strong>
+                <span>Extension platform with service workers, declarativeNetRequest, scripting API</span>
+            </div>
+            <div class="tech-item">
+                <strong>JavaScript ES Modules</strong>
+                <span>Popup scripts, background service worker, content scripts</span>
+            </div>
+            <div class="tech-item">
+                <strong>Acorn.js</strong>
+                <span>JavaScript static analysis parser for detecting hardcoded keys in page scripts</span>
+            </div>
+            <div class="tech-item">
+                <strong>Chrome APIs</strong>
+                <span>webRequest, declarativeNetRequest, scripting, tabs, runtime messaging</span>
+            </div>
+            <div class="tech-item">
+                <strong>PHP / MySQL</strong>
+                <span>Deliberately vulnerable backend with raw SQL queries and insecure authentication</span>
+            </div>
+            <div class="tech-item">
+                <strong>Node.js / Express</strong>
+                <span>Local test server hosting for the vulnerable website</span>
+            </div>
+        </div>
+
+        <!-- ───── Team ───── -->
+        <h4>Team</h4>
+        <p>Web Application Security</p>
+        <p><a href="https://github.com/TheAzziIzzuan/CyberStrike" target="_blank">View on GitHub &rarr;</a></p>
+
+    </div>
+</body>
+
+</html>
