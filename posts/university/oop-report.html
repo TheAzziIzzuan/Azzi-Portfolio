@@ -1,58 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>OOP Game Engine Report</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
-
-    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" type="text/css" href="../../default.css">
-
-    <style type="text/css">
-        .img-container {
-            max-width: 600px;
-        }
-        
-        img {
-            width: 100%
-        }
-    </style>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body>
-    <div class="nav-wrapper">
+    <header class="header">
+        <nav class="nav">
+            <a href="../../index.html#projects" class="project-back">
+                <i class="fas fa-arrow-left"></i> Back to Portfolio
+            </a>
+        </nav>
+    </header>
 
-        <!-- Link around dots-wrapper added after tutorial video -->
-        <a href="../../index.html">
-            <div class="dots-wrapper">
-                <div id="dot-1" class="browser-dot"></div>
-                <div id="dot-2" class="browser-dot"></div>
-                <div id="dot-3" class="browser-dot"></div>
-            </div>
-        </a>
-
-        <ul id="navigation">
-            <li><a href="../../index.html#contact">Contact</a></li>
-
-        </ul>
-    </div>
-
-    <div class="main-container">
-        <br>
-
-        <h3>Object Oriented Programming</h3>
+<main class="project-detail">
+        <div class="container">
+            <div class="project-content">
+<h3>Object Oriented Programming</h3>
 
         <p><strong>Last Updated:</strong> 11/02/2026</p>
         <p><strong>Project Type:</strong> 2D platformer game (team project)</p>
 
         <h4>Project Pitch</h4>
-        <p align="justify">This is a team-built 2D platformer inspired by the pacing and feel of Mario and MapleStory. The goal is to create a clean, responsive side-scrolling experience with tight movement, meaningful item interactions, and enemies that keep the player engaged without overwhelming them. We are not just building a game; we are also building the engine layer that powers it, so the project shows both gameplay design and software architecture.</p>
-        <p align="justify">From a visitor perspective, this project demonstrates that I can design core gameplay loops, structure a game engine that supports reuse, and translate a report-heavy submission into a clear, playable concept. The presentation focuses on the experience first (movement, combat, items, progression), while still highlighting the engineering behind it.</p>
+        <p >This is a team-built 2D platformer inspired by the pacing and feel of Mario and MapleStory. The goal is to create a clean, responsive side-scrolling experience with tight movement, meaningful item interactions, and enemies that keep the player engaged without overwhelming them. We are not just building a game; we are also building the engine layer that powers it, so the project shows both gameplay design and software architecture.</p>
+        <p >From a visitor perspective, this project demonstrates that I can design core gameplay loops, structure a game engine that supports reuse, and translate a report-heavy submission into a clear, playable concept. The presentation focuses on the experience first (movement, combat, items, progression), while still highlighting the engineering behind it.</p>
 
         <h4>Gameplay Focus</h4>
         <ul>
@@ -62,7 +42,7 @@
             <li>AI enemies with simple movement behaviors</li>
             <li>Multiple scenes (main menu, gameplay, pause, win/lose)</li>
         </ul>
-        <p align="justify">Gameplay is designed to be familiar but polished: fast movement, clear feedback when the player collects items or collides with hazards, and a level flow that encourages replay. The items and points system make each run feel different, while the menu and scene structure keep the experience organized and easy to navigate.</p>
+        <p >Gameplay is designed to be familiar but polished: fast movement, clear feedback when the player collects items or collides with hazards, and a level flow that encourages replay. The items and points system make each run feel different, while the menu and scene structure keep the experience organized and easy to navigate.</p>
 
         <h4>Engine Highlights</h4>
         <ul>
@@ -72,19 +52,58 @@
             <li>Collision handling with specialized handlers</li>
             <li>Centralized resource management (textures, assets)</li>
         </ul>
-        <p align="justify">The engine is structured so new levels, entities, and screens can be added without rewriting existing systems. JSON configuration makes level design quick to update, and the factory pattern keeps entity creation consistent. This means the game is easy to extend, which is important for future features like new enemies, power-ups, or UI screens.</p>
+        <p >The engine is structured so new levels, entities, and screens can be added without rewriting existing systems. JSON configuration makes level design quick to update, and the factory pattern keeps entity creation consistent. This means the game is easy to extend, which is important for future features like new enemies, power-ups, or UI screens.</p>
 
         <h4>My Role</h4>
-        <p align="justify">I focused on the game flow and player experience. On the engine side, I implemented the Simulation LifeCycle Manager (to handle setup, resets, and state transitions) and the Sound Manager (to control music and effects). On the game layer, I built the core screens (Main, Pause, Play, Win/Lose), which define how the player enters, interacts, and exits gameplay. I also contributed to UI testing and tiled map design to ensure a consistent, readable game environment.</p>
+        <p >I focused on the game flow and player experience. On the engine side, I implemented the Simulation LifeCycle Manager (to handle setup, resets, and state transitions) and the Sound Manager (to control music and effects). On the game layer, I built the core screens (Main, Pause, Play, Win/Lose), which define how the player enters, interacts, and exits gameplay. I also contributed to UI testing and tiled map design to ensure a consistent, readable game environment.</p>
 
         <h4>Team</h4>
-        <p align="justify">Team P4/4: Ong Hong Liang, Heng Seng Hong, Royston, Muhammad Azzi Izzuan Bin Azahar, Cheah Zheng Feng, Foo Zhan Yong.</p>
+        <p >Team P4/4: Ong Hong Liang, Heng Seng Hong, Royston, Muhammad Azzi Izzuan Bin Azahar, Cheah Zheng Feng, Foo Zhan Yong.</p>
 
         <h4>Report (Full Details)</h4>
-        <p align="justify">If you want the technical report, you can read the full submission here: <a href="oopreport.pdf" target="_blank">OOP Report PDF</a>.</p>
+        <p >If you want the technical report, you can read the full submission here: <a href="oopreport.pdf" target="_blank">OOP Report PDF</a>.</p>
+            </div><!-- /project-content -->
+        </div><!-- /container -->
+    </main>
 
-    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">
+                    Designed & Built by <strong>Azzi Izzuan</strong> &copy; <span id="current-year"></span>
+                </p>
+                <div class="footer-links">
+                    <a href="../../index.html#projects" aria-label="Home"><i class="fas fa-home"></i></a>
+                    <a href="../../resume.pdf" target="_blank" aria-label="Resume"><i class="fas fa-file-pdf"></i></a>
+                </div>
+            </div>
+        </div>
+        <script>
+        document.getElementById("current-year").textContent = new Date().getFullYear();
+    </script>
+</footer>
+  <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
+  <script id="scroll-top-script">
+    (function() {
+      var btn = document.getElementById('scroll-top');
+      if (!btn) return;
+      var ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(function() {
+            btn.classList.toggle('visible', window.scrollY > 300);
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+  </script>
 </body>
-
 </html>

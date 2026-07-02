@@ -1,417 +1,335 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Azzi Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Azzi Izzuan — Information Security Portfolio</title>
+  <meta name="description" content="Information Security portfolio — projects in network security, ethical hacking, digital forensics, and secure systems architecture.">
 
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
-
-    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-    <link rel="icon" href="./images/351456.png">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Russo+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <link rel="stylesheet" type="text/css" href="default.css">
-    <link rel="stylesheet" type="text/css" href="email.php">
-    <link id="theme-style" rel="stylesheet" type="text/css" href="">
+  <link rel="icon" href="images/351456.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
 
-    <section class="s1">
-        <div class="main-container">
-            <div class="greeting-wrapper">
-                <h1>Hello there, I'm Azzi Izzuan</h1>
-            </div>
+  <!-- ═══════════════ NAVIGATION ═══════════════ -->
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <span class="nav-logo">Azzi Izzuan</span>
+      <div class="nav-links">
+        <a href="#expertise">Expertise</a>
+        <a href="#projects">Projects</a>
+      </div>
+    </div>
+  </nav>
 
+  <main>
 
-            <div class="intro-wrapper">
-                <div class="nav-wrapper">
-
-                    <!-- Link around dots-wrapper added after tutorial video -->
-                    <a href="index.html">
-                        <div class="dots-wrapper">
-                            <div id="dot-1" class="browser-dot"></div>
-                            <div id="dot-2" class="browser-dot"></div>
-                            <div id="dot-3" class="browser-dot"></div>
-                        </div>
-                    </a>
-
-
-                    <ul id="navigation">
-                        <li><a href="index.html#contact">Contact</a></li>
-
-                    </ul>
-                </div>
-
-                <div class="left-column">
-                    <img id="profile_pic" src="images/Azzi.jpg">
-                    <h5 style="text-align: center;line-height: 0;">Change Colour</h5>
-
-
-                    <div id="theme-options-wrapper">
-                        <div data-mode="light" id="light-mode" class="theme-dot"></div>
-                        <div data-mode="blue" id="blue-mode" class="theme-dot"></div>
-                    </div>
-
-                    <p id="settings-note">*Theme settings will be saved for<br>your next visit</p>
-                </div>
-
-                <div class="right-column">
-
-                    <div id="preview-shadow">
-                        <div id="preview">
-                            <div id="corner-tl" class="corner"></div>
-                            <div id="corner-tr" class="corner"></div>
-                            <h3>What I Do</h3>
-                            <p>I am an Undergraduate pursuing a Bachelor of Engineering with Honours, majoring in Information Security.</p>
-                            <div id="corner-br" class="corner"></div>
-                            <div id="corner-bl" class="corner"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="hero">
+      <!-- Animated network mesh background -->
+      <div class="hero-canvas" aria-hidden="true">
+        <div class="hero-node hero-node--1"></div>
+        <div class="hero-node hero-node--2"></div>
+        <div class="hero-node hero-node--3"></div>
+        <div class="hero-node hero-node--4"></div>
+        <div class="hero-node hero-node--5"></div>
+        <div class="hero-edge hero-edge--a"></div>
+        <div class="hero-edge hero-edge--b"></div>
+        <div class="hero-edge hero-edge--c"></div>
+        <div class="hero-edge hero-edge--d"></div>
+        <div class="hero-pulse"></div>
+      </div>
+      <div class="container hero-content">
+        <h1 class="display-xl">Azzi Izzuan</h1>
+        <p class="hero-subtitle">Information Security</p>
+        <p class="hero-rotating">I <span id="rotating-text"></span><span class="cursor-blink">|</span></p>
+        <div class="rule"></div>
+        <div class="hero-links">
+          <a class="connect-link" href="mailto:theazziizzuan@gmail.com">Email</a>
+          <a class="connect-link" href="https://www.linkedin.com/in/azzi-izzuan/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="connect-link" href="resume.pdf" target="_blank">Resume &nearr;</a>
         </div>
-    </section>
-    <section class="s2">
-        <div class="main-container">
-
-            <div class="about-wrapper">
-                <div class="about-me">
-                    <h4>More about me</h4>
-
-                    <p align="justify">I am an Undergraduate pursuing a Bachelor of Engineering with Honours, majoring in Information Security with hands-on experience in cloud networking and cybersecurity.</p>
-
-                    <p align="justify">Eager to apply my skills in real-world challenges and continuously grow my knowledge in the field. Passionate about IT and dedicated to success.</p>
-
-
-                    <hr>
-
-                    <h4>TOP EXPERTISE</h4>
-
-                    <p>Basic Cloud Networking with primary focus on Cyber Security:
-
-                        <div id="skills">
-                            <ul>
-                                <li>Database management</li>
-                                <li>Cloud Security</li>
-                                <li>Storage</li>
-                                <li>Performance testing</li>
-                                <li>AWS</li>
-                            </ul>
-
-                            <ul>
-                                <li>Scripting</li>
-                                <li>Intrusion detection</li>
-                                <li>Operating systems</li>
-                                <li>Incident response</li>
-                                <li>Regulatory guidelines</li>
-                            </ul>
-
-                        </div>
-
-                </div>
-
-
-                <div class="social-links">
-                    <h3>Find me on my socials below</h3>
-
-                    <div class="social-container">
-                        <a target="_blank" href="https://www.linkedin.com/in/azzi-izzuan/" class="social-link">
-                            <i class="fab fa-linkedin"></i>
-                            <span>LinkedIn</span>
-                        </a>
-                        <a target="_blank" href="resume.pdf" class="social-link">
-                            <i class="fas fa-file-pdf"></i>
-                            <span>Resume</span>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
+      </div>
     </section>
 
-    <section class="s1">
-        <div class="main-container">
-            <a name="projects"></a>
-            <h3 style="text-align: center;">University Projects</h3>
+    <!-- ═══════════════ EXPERTISE ═══════════════ -->
+    <section class="section" id="expertise">
+      <div class="container reveal">
+        <span class="section-label">Expertise</span>
+        <h2>Domains of practice</h2>
 
-            <div class="post-wrapper">
+        <div class="expertise-grid">
 
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/university/housing-singapore.png">
-                        <div class="post-preview">
-                            <h6 class="post-title">Housing in Singapore</h6>
-                            <p class="post-intro">Data analysis and visualization of Singapore's housing market using Python</p>
-                            <a href="posts/university/housing-singapore.html" target="_blank">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/university/parcel-flip-detection.png">
-                        <div class="post-preview">
-                            <h6 class="post-title">Parcel Flip Detection</h6>
-                            <p class="post-intro">IoT sensor system to detect and log package handling anomalies during delivery</p>
-                            <a href="posts/university/parcel-flip-detection.html" target="_blank">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/university/oop-report.svg">
-                        <div class="post-preview">
-                            <h6 class="post-title">OOP Game Engine Report</h6>
-                            <p class="post-intro">Team project report detailing engine architecture, patterns, and design decisions</p>
-                            <a href="posts/university/oop-report.html" target="_blank">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/university/networking-project.svg">
-                        <div class="post-preview">
-                            <h6 class="post-title">Enterprise Network Design</h6>
-                            <p class="post-intro">Fault-tolerant, scalable Cisco network with VLANs, redundancy, and secure internet access</p>
-                            <a href="posts/university/networking-project.html" target="_blank">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/university/os-scheduling.png">
-                        <div class="post-preview">
-                            <h6 class="post-title">CPU Scheduling Algorithms</h6>
-                            <p class="post-intro">Comparing five different approaches to optimize process scheduling performance</p>
-                            <a href="posts/university/os-scheduling.html" target="_blank">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/university/dsa-foodiefinder.svg">
-                        <div class="post-preview">
-                            <h6 class="post-title">FoodieFinder</h6>
-                            <p class="post-intro">Full-stack app to find halal and vegan food in Singapore using Dijkstra, Trie, and web scraping</p>
-                            <a href="posts/university/dsa-foodiefinder.html" target="_blank">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/university/network-security.png">
-                        <div class="post-preview">
-                            <h6 class="post-title">Network Security Infrastructure</h6>
-                            <p class="post-intro">Designing and hardening a secure enterprise network with Cisco ASA firewall, IDS, TACACS+ AAA, and layered defences</p>
-                            <a href="posts/university/network-security.html" target="_blank">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/university/ethical-hacking.svg">
-                        <div class="post-preview">
-                            <h6 class="post-title">Ethical Hacking</h6>
-                            <p class="post-intro">Exploiting a Minecraft server via Log4Shell and pen-testing a vulnerable web app for backdoor access</p>
-                            <a href="posts/university/ethical-hacking.html" target="_blank">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/university/ml-motorcycle.svg">
-                        <div class="post-preview">
-                            <h6 class="post-title">Machine Learning</h6>
-                            <p class="post-intro">Predicting motorcycle resale prices in Singapore using Random Forest, XGBoost, LightGBM, SVM, and CatBoost</p>
-                            <a href="posts/university/ml-motorcycle.html" target="_blank">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/university/mobile-security.svg">
-                        <div class="post-preview">
-                            <h6 class="post-title">Mobile Security</h6>
-                            <p class="post-intro">Trojanized Android social media app that secretly exfiltrates contacts, GPS location, and sensor data</p>
-                            <a href="posts/university/mobile-security.html" target="_blank">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/university/cyberstrike.svg">
-                        <div class="post-preview">
-                            <h6 class="post-title">CyberStrike</h6>
-                            <p class="post-intro">Chrome extension for automated web vulnerability scanning with 6 OWASP-aligned modules and a vulnerable PHP test site</p>
-                            <a href="posts/university/cyberstrike.html" target="_blank">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/university/crypto-proximity.svg">
-                        <div class="post-preview">
-                            <h6 class="post-title">Privacy-Preserving Proximity Detection</h6>
-                            <p class="post-intro">Client-server proximity detection using Paillier homomorphic encryption — checks if users are nearby without revealing exact locations</p>
-                            <a href="posts/university/crypto-proximity.html" target="_blank">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
+          <div class="expertise-card">
+            <h3>Defensive Security</h3>
+            <div class="pills">
+              <span class="tag-mono">Network Security</span>
+              <span class="tag-mono">Intrusion Detection</span>
+              <span class="tag-mono">Incident Response</span>
+              <span class="tag-mono">Security Hardening</span>
+              <span class="tag-mono">Regulatory Compliance</span>
             </div>
-        </div>
-    </section>
+          </div>
 
-    <section class="s1">
-        <div class="main-container">
-            <h3 style="text-align: center;">Polytechnic Projects</h3>
-
-            <div class="post-wrapper">
-
-
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/internship/logo.png">
-                        <div class="post-preview">
-                            <h6 class="post-title">Internship</h6>
-                            <p class="post-intro">Six Months Internship at Shimano</p>
-                            <a href="posts/internship/internship.html" target="_blank">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/fp2/scratch fundemental.png">
-                        <div class="post-preview">
-                            <h6 class="post-title">FP2</h6>
-                            <p class="post-intro">Fundemental For IT Professionals</p>
-                            <a href="posts/fp2.html" target="_blank">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/portfolio one/portfolioone.png">
-                        <div class="post-preview">
-                            <h6 class="post-title">Portfolio I</h6>
-                            <p class="post-intro">Lite Predictive Maintainence for machines and cars</p>
-                            <a href="posts/portfolio one/portfolio one home.html" target="_blank">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/cloud architecure/cloud.png">
-                        <div class="post-preview">
-                            <h6 class="post-title">Cloud Architecture</h6>
-                            <p class="post-intro">Scalable,resilient and load-balanced webserver</p>
-                            <a href="posts/cloud architecture/cloud.html" target="_blank">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/csf/csfhome.jpeg">
-                        <div class="post-preview">
-                            <h6 class="post-title">Cyber Security Fundemental</h6>
-                            <p class="post-intro">Cross-Site Request Forgery using burp-suite</p>
-                            <a href="posts/csf/csfhome.html" target="_blank">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/digital forensics/myths-about-digital-forensics.jpg">
-                        <div class="post-preview">
-                            <h6 class="post-title">Digital Forensics</h6>
-                            <p class="post-intro">Research on tools that would ease the forensic process</p>
-                            <a href="posts/digital forensics/Digital Forensics.html" target="_blank">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
+          <div class="expertise-card">
+            <h3>Offensive Security</h3>
+            <div class="pills">
+              <span class="tag-mono">Ethical Hacking</span>
+              <span class="tag-mono">Mobile Security</span>
+              <span class="tag-mono">Vulnerability Scanning</span>
+              <span class="tag-mono">Penetration Testing</span>
+              <span class="tag-mono">OWASP Top 10</span>
             </div>
-        </div>
-    </section>
+          </div>
 
-    <section class="s1">
-        <div class="main-container">
-            <h3 style="text-align: center;">ITE Projects</h3>
-
-            <div class="post-wrapper">
-
-                <div>
-                    <div class="post">
-                        <img class="thumbnail" src="images/itefyp/Homepage.png">
-                        <div class="post-preview">
-                            <h6 class="post-title">Final Year Project</h6>
-                            <p class="post-intro">ITE FYP designed built website for photographers to bond in Singapore</p>
-                            <a href="posts/itefyp.html" target="_blank">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
+          <div class="expertise-card">
+            <h3>Systems &amp; Architecture</h3>
+            <div class="pills">
+              <span class="tag-mono">Cloud Security</span>
+              <span class="tag-mono">AWS</span>
+              <span class="tag-mono">Enterprise Networks</span>
+              <span class="tag-mono">OS Internals</span>
+              <span class="tag-mono">Performance Testing</span>
             </div>
-        </div>
-    </section>
+          </div>
 
-    <section class="s1">
-        <div class="main-container">
-            <h3 style="text-align: center;">University Projects</h3>
-
-            <div class="post-wrapper">
-                <!-- Add your university projects here -->
+          <div class="expertise-card">
+            <h3>Analysis &amp; Forensics</h3>
+            <div class="pills">
+              <span class="tag-mono">Digital Forensics</span>
+              <span class="tag-mono">Machine Learning</span>
+              <span class="tag-mono">Cryptography</span>
+              <span class="tag-mono">Database Management</span>
+              <span class="tag-mono">Data Analysis</span>
             </div>
+          </div>
+
         </div>
+      </div>
     </section>
 
-    <section class="s2">
-        <div class="main-container">
-            <a href=""></a>
-            <h3 style="text-align: center;">Get In Touch</h3>
+    <!-- ═══════════════ PROJECTS ═══════════════ -->
+    <section class="section" id="projects">
+      <div class="container reveal">
+        <span class="section-label">Projects</span>
+        <h2>Work in security, systems, and analysis</h2>
 
-            <form id="contact-form" action="mailto:theazziizzuan@gmail.com" method="post" enctype="text/plain">
-                <a name="contact"></a>
-
-                <label>Name</label>
-                <input class="input-field" type="text" name="name">
-
-                <label>Subject</label>
-                <input class="input-field" type="text" name="subject">
-
-                <label>Email</label>
-                <input class="input-field" type="text" name="email">
-
-                <label>Message</label>
-                <textarea class="input-field" name="message"></textarea>
-
-                <input id="submit-btn" type="submit" value="Send">
-            </form>
+        <!-- Filter -->
+        <div class="filter-bar" id="filter-bar">
+          <button class="filter-pill active" data-filter="all">All</button>
+          <button class="filter-pill" data-filter="university">University</button>
+          <button class="filter-pill" data-filter="polytechnic">Polytechnic</button>
+          <button class="filter-pill" data-filter="ite">ITE</button>
         </div>
+
+        <!-- Grid -->
+        <div class="project-grid" id="project-grid">
+
+          <!-- ═══ UNIVERSITY ═══ -->
+          <a class="project-card" data-category="university" href="posts/university/housing-singapore.html" target="_blank">
+            <img class="project-card-thumb" src="images/university/housing-singapore.png" alt="Housing in Singapore" loading="lazy">
+            <div class="project-card-body">
+              <span class="tag-mono">University</span>
+              <h3>Housing in Singapore</h3>
+              <p>Data analysis and visualization of Singapore's housing market using Python</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-category="university" href="posts/university/parcel-flip-detection.html" target="_blank">
+            <img class="project-card-thumb" src="images/university/parcel-flip-detection.png" alt="Parcel Flip Detection" loading="lazy">
+            <div class="project-card-body">
+              <span class="tag-mono">University</span>
+              <h3>Parcel Flip Detection</h3>
+              <p>IoT sensor system to detect and log package handling anomalies during delivery</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-category="university" href="posts/university/oop-report.html" target="_blank">
+            <img class="project-card-thumb" src="images/university/oop-report.svg" alt="OOP Game Engine Report" loading="lazy">
+            <div class="project-card-body">
+              <span class="tag-mono">University</span>
+              <h3>OOP Game Engine Report</h3>
+              <p>Team project report detailing engine architecture, patterns, and design decisions</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-category="university" href="posts/university/networking-project.html" target="_blank">
+            <img class="project-card-thumb" src="images/university/networking-project.svg" alt="Enterprise Network Design" loading="lazy">
+            <div class="project-card-body">
+              <span class="tag-mono">University</span>
+              <h3>Enterprise Network Design</h3>
+              <p>Fault-tolerant, scalable Cisco network with VLANs, redundancy, and secure internet access</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-category="university" href="posts/university/os-scheduling.html" target="_blank">
+            <img class="project-card-thumb" src="images/university/os-scheduling.png" alt="CPU Scheduling Algorithms" loading="lazy">
+            <div class="project-card-body">
+              <span class="tag-mono">University</span>
+              <h3>CPU Scheduling Algorithms</h3>
+              <p>Comparing five different approaches to optimize process scheduling performance</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-category="university" href="posts/university/dsa-foodiefinder.html" target="_blank">
+            <img class="project-card-thumb" src="images/university/dsa-foodiefinder.svg" alt="FoodieFinder" loading="lazy">
+            <div class="project-card-body">
+              <span class="tag-mono">University</span>
+              <h3>FoodieFinder</h3>
+              <p>Full-stack app to find halal and vegan food in Singapore using Dijkstra, Trie, and web scraping</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-category="university" href="posts/university/network-security.html" target="_blank">
+            <img class="project-card-thumb" src="images/university/network-security.png" alt="Network Security Infrastructure" loading="lazy">
+            <div class="project-card-body">
+              <span class="tag-mono">University</span>
+              <h3>Network Security Infrastructure</h3>
+              <p>Designing and hardening a secure enterprise network with Cisco ASA firewall, IDS, TACACS+ AAA, and layered defences</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-category="university" href="posts/university/ethical-hacking.html" target="_blank">
+            <img class="project-card-thumb" src="images/university/ethical-hacking.svg" alt="Ethical Hacking" loading="lazy">
+            <div class="project-card-body">
+              <span class="tag-mono">University</span>
+              <h3>Ethical Hacking</h3>
+              <p>Exploiting a Minecraft server via Log4Shell and pen-testing a vulnerable web app for backdoor access</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-category="university" href="posts/university/ml-motorcycle.html" target="_blank">
+            <img class="project-card-thumb" src="images/university/ml-motorcycle.svg" alt="Machine Learning" loading="lazy">
+            <div class="project-card-body">
+              <span class="tag-mono">University</span>
+              <h3>Machine Learning</h3>
+              <p>Predicting motorcycle resale prices in Singapore using Random Forest, XGBoost, LightGBM, SVM, and CatBoost</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-category="university" href="posts/university/mobile-security.html" target="_blank">
+            <img class="project-card-thumb" src="images/university/mobile-security.svg" alt="Mobile Security" loading="lazy">
+            <div class="project-card-body">
+              <span class="tag-mono">University</span>
+              <h3>Mobile Security</h3>
+              <p>Trojanized Android social media app that secretly exfiltrates contacts, GPS location, and sensor data</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-category="university" href="posts/university/cyberstrike.html" target="_blank">
+            <img class="project-card-thumb" src="images/university/cyberstrike.svg" alt="CyberStrike" loading="lazy">
+            <div class="project-card-body">
+              <span class="tag-mono">University</span>
+              <h3>CyberStrike</h3>
+              <p>Chrome extension for automated web vulnerability scanning with 6 OWASP-aligned modules and a vulnerable PHP test site</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-category="university" href="posts/university/crypto-proximity.html" target="_blank">
+            <img class="project-card-thumb" src="images/university/crypto-proximity.svg" alt="Privacy-Preserving Proximity Detection" loading="lazy">
+            <div class="project-card-body">
+              <span class="tag-mono">University</span>
+              <h3>Privacy-Preserving Proximity Detection</h3>
+              <p>Client-server proximity detection using Paillier homomorphic encryption — checks if users are nearby without revealing exact locations</p>
+            </div>
+          </a>
+
+          <!-- ═══ POLYTECHNIC ═══ -->
+          <a class="project-card" data-category="polytechnic" href="posts/internship/internship.html" target="_blank">
+            <img class="project-card-thumb" src="images/internship/logo.png" alt="Internship at Shimano" loading="lazy">
+            <div class="project-card-body">
+              <span class="tag-mono">Polytechnic</span>
+              <h3>Internship — Shimano</h3>
+              <p>Six-month internship at Shimano, working with IT infrastructure and operations</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-category="polytechnic" href="posts/fp2.html" target="_blank">
+            <img class="project-card-thumb" src="images/fp2/scratch fundemental.png" alt="FP2" loading="lazy">
+            <div class="project-card-body">
+              <span class="tag-mono">Polytechnic</span>
+              <h3>FP2 — IT Fundamentals</h3>
+              <p>Fundamentals for IT Professionals — foundational computing and scripting</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-category="polytechnic" href="posts/portfolio one/portfolio one home.html" target="_blank">
+            <img class="project-card-thumb" src="images/portfolio one/portfolioone.png" alt="Portfolio I" loading="lazy">
+            <div class="project-card-body">
+              <span class="tag-mono">Polytechnic</span>
+              <h3>Portfolio I — Predictive Maintenance</h3>
+              <p>Lite predictive maintenance system for machines and vehicles</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-category="polytechnic" href="posts/cloud architecture/cloud.html" target="_blank">
+            <img class="project-card-thumb" src="images/cloud architecure/cloud.png" alt="Cloud Architecture" loading="lazy">
+            <div class="project-card-body">
+              <span class="tag-mono">Polytechnic</span>
+              <h3>Cloud Architecture</h3>
+              <p>Scalable, resilient, and load-balanced web server infrastructure</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-category="polytechnic" href="posts/csf/csfhome.html" target="_blank">
+            <img class="project-card-thumb" src="images/csf/csfhome.jpeg" alt="Cyber Security Fundamental" loading="lazy">
+            <div class="project-card-body">
+              <span class="tag-mono">Polytechnic</span>
+              <h3>Cyber Security Fundamental</h3>
+              <p>Cross-Site Request Forgery attack analysis and exploitation using Burp Suite</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-category="polytechnic" href="posts/digital forensics/Digital Forensics.html" target="_blank">
+            <img class="project-card-thumb" src="images/digital forensics/myths-about-digital-forensics.jpg" alt="Digital Forensics" loading="lazy">
+            <div class="project-card-body">
+              <span class="tag-mono">Polytechnic</span>
+              <h3>Digital Forensics</h3>
+              <p>Research on tools and methodologies that streamline the forensic investigation process</p>
+            </div>
+          </a>
+
+          <!-- ═══ ITE ═══ -->
+          <a class="project-card" data-category="ite" href="posts/itefyp.html" target="_blank">
+            <img class="project-card-thumb" src="images/itefyp/Homepage.png" alt="ITE Final Year Project" loading="lazy">
+            <div class="project-card-body">
+              <span class="tag-mono">ITE</span>
+              <h3>Final Year Project — Photographer Community</h3>
+              <p>A web platform designed and built to connect photographers across Singapore</p>
+            </div>
+          </a>
+
+        </div><!-- /project-grid -->
+      </div>
     </section>
 
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <p class="footer-text">
+            Designed &amp; Built by <strong>Azzi Izzuan</strong> &copy; <span id="current-year"></span>
+          </p>
+          <div class="footer-links">
+            <a href="#" aria-label="Home"><i class="fas fa-home"></i></a>
+            <a href="resume.pdf" target="_blank" aria-label="Resume"><i class="fas fa-file-pdf"></i></a>
+          </div>
+        </div>
+      </div>
+      <script>
+        document.getElementById("current-year").textContent = new Date().getFullYear();
+      </script>
+    </footer>
 
-    <script type="text/javascript" src="script.js"></script>
+  </main>
+
+  <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script src="script.js"></script>
 </body>
-
 </html>

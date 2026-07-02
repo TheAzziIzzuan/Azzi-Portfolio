@@ -1,56 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>Analysis of Housing in Singapore Using Python</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
-
-    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" type="text/css" href="../../default.css">
-
-    <style type="text/css">
-        .img-container {
-            max-width: 600px;
-        }
-        
-        img {
-            width: 100%
-        }
-    </style>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body>
-    <div class="nav-wrapper">
+    <header class="header">
+        <nav class="nav">
+            <a href="../../index.html#projects" class="project-back">
+                <i class="fas fa-arrow-left"></i> Back to Portfolio
+            </a>
+        </nav>
+    </header>
 
-        <!-- Link around dots-wrapper added after tutorial video -->
-        <a href="../../index.html">
-            <div class="dots-wrapper">
-                <div id="dot-1" class="browser-dot"></div>
-                <div id="dot-2" class="browser-dot"></div>
-                <div id="dot-3" class="browser-dot"></div>
-            </div>
-        </a>
-
-        <ul id="navigation">
-            <li><a href="../../index.html#contact">Contact</a></li>
-
-        </ul>
-    </div>
-
-    <div class="main-container">
-        <br>
-
-        <h3>INF1002P13-84 - Analysis of Housing in Singapore</h3>
+<main class="project-detail">
+        <div class="container">
+            <div class="project-content">
+<h3>INF1002P13-84 - Analysis of Housing in Singapore</h3>
         
         <p><strong>Last Updated:</strong> 15/10/2023</p>
 
         <h4>Problem Statement</h4>
-        <p align="justify">In the face of escalating property costs, high population density, and changing demographic needs, Singapore has challenges in providing cheap, accessible, and sustainable housing for its inhabitants.</p>
+        <p >In the face of escalating property costs, high population density, and changing demographic needs, Singapore has challenges in providing cheap, accessible, and sustainable housing for its inhabitants.</p>
 
         <h4>Key Objectives</h4>
         <ul>
@@ -64,7 +44,7 @@
         </ul>
 
         <h4>Data Sources</h4>
-        <p align="justify">Majority of datasets were sourced from <a href="https://data.gov.sg" target="_blank">data.gov.sg</a>, containing various information ranging from HDB property information, nearby amenities and government schemes, to rental information and resale prices within a 10-year limitation including pre and post-COVID-19.</p>
+        <p >Majority of datasets were sourced from <a href="https://data.gov.sg" target="_blank">data.gov.sg</a>, containing various information ranging from HDB property information, nearby amenities and government schemes, to rental information and resale prices within a 10-year limitation including pre and post-COVID-19.</p>
 
         <h4>Possible Outcomes</h4>
         <ul>
@@ -85,7 +65,7 @@
         </ul>
 
         <h4>Technical Details</h4>
-        <p align="justify">The loading.py will be the first python file to be run as there are functions such as allowing user to automatically install the libraries and modules used in this project. Afterwards, user will but automatically be brought to the main.py which displays the graphs. Before running the loading.py, ensure the file directory is 'Data Visualisation'.</p>
+        <p >The loading.py will be the first python file to be run as there are functions such as allowing user to automatically install the libraries and modules used in this project. Afterwards, user will but automatically be brought to the main.py which displays the graphs. Before running the loading.py, ensure the file directory is 'Data Visualisation'.</p>
 
         <h4>Technologies Used</h4>
         <ul>
@@ -94,9 +74,48 @@
             <li>Data Analysis and Processing</li>
             <li>Government Open Data APIs</li>
         </ul>
+            </div><!-- /project-content -->
+        </div><!-- /container -->
+    </main>
 
-    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">
+                    Designed & Built by <strong>Azzi Izzuan</strong> &copy; <span id="current-year"></span>
+                </p>
+                <div class="footer-links">
+                    <a href="../../index.html#projects" aria-label="Home"><i class="fas fa-home"></i></a>
+                    <a href="../../resume.pdf" target="_blank" aria-label="Resume"><i class="fas fa-file-pdf"></i></a>
+                </div>
+            </div>
+        </div>
+        <script>
+        document.getElementById("current-year").textContent = new Date().getFullYear();
+    </script>
+</footer>
+  <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
+  <script id="scroll-top-script">
+    (function() {
+      var btn = document.getElementById('scroll-top');
+      if (!btn) return;
+      var ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(function() {
+            btn.classList.toggle('visible', window.scrollY > 300);
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+  </script>
 </body>
-
 </html>

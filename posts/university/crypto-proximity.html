@@ -1,232 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>Privacy-Preserving Proximity Detection</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
-
-    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" type="text/css" href="../../default.css">
-
-    <style type="text/css">
-        .img-container {
-            max-width: 600px;
-        }
-
-        img {
-            width: 100%;
-        }
-
-        .dual-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5em;
-            margin: 1.5em 0;
-        }
-
-        @media (max-width: 640px) {
-            .dual-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .surface-card {
-            border: 1px solid #444;
-            border-radius: 8px;
-            padding: 1.2em;
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        .surface-card h4 {
-            margin: 0 0 0.5em 0;
-            font-size: 0.95em;
-        }
-
-        .surface-card p,
-        .surface-card li {
-            margin: 0;
-            font-size: 0.85em;
-            line-height: 1.6;
-        }
-
-        .surface-card ul {
-            list-style: none;
-            padding: 0;
-            margin: 0.5em 0 0;
-        }
-
-        .surface-card ul li {
-            padding: 0.3em 0;
-        }
-
-        .server-card {
-            border-left: 3px solid #42a5f5;
-        }
-
-        .server-card h4 {
-            color: #42a5f5;
-        }
-
-        .client-card {
-            border-left: 3px solid #66bb6a;
-        }
-
-        .client-card h4 {
-            color: #66bb6a;
-        }
-
-        .protocol-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5em;
-            margin: 1.5em 0;
-        }
-
-        @media (max-width: 640px) {
-            .protocol-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .protocol-card {
-            border: 1px solid #444;
-            border-radius: 8px;
-            padding: 1.2em;
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        .protocol-card h4 {
-            margin: 0 0 0.5em 0;
-            font-size: 0.95em;
-            color: #ab47bc;
-        }
-
-        .protocol-card p {
-            margin: 0 0 0.5em;
-            font-size: 0.85em;
-            line-height: 1.6;
-        }
-
-        .step-list {
-            list-style: none;
-            padding: 0;
-            margin: 0.8em 0 0;
-            counter-reset: step;
-        }
-
-        .step-list li {
-            padding: 0.4em 0 0.4em 2em;
-            font-size: 0.82em;
-            line-height: 1.5;
-            position: relative;
-            counter-increment: step;
-        }
-
-        .step-list li::before {
-            content: counter(step);
-            position: absolute;
-            left: 0;
-            width: 1.5em;
-            height: 1.5em;
-            border-radius: 50%;
-            background: rgba(171, 71, 188, 0.15);
-            color: #ab47bc;
-            text-align: center;
-            line-height: 1.5em;
-            font-size: 0.85em;
-            font-weight: bold;
-        }
-
-        .security-list {
-            list-style: none;
-            padding: 0;
-            margin: 1.5em 0;
-        }
-
-        .security-list li {
-            padding: 0.8em 1em;
-            margin-bottom: 0.6em;
-            border-left: 3px solid #42a5f5;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 0 6px 6px 0;
-            font-size: 0.88em;
-            line-height: 1.6;
-        }
-
-        .security-list li strong {
-            display: block;
-            margin-bottom: 0.2em;
-            font-size: 0.95em;
-        }
-
-        .math-block {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid #444;
-            border-radius: 8px;
-            padding: 1em 1.2em;
-            margin: 1em 0;
-            font-family: 'Roboto Mono', monospace;
-            font-size: 0.85em;
-            line-height: 1.8;
-        }
-
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 0.8em;
-            margin: 1.5em 0;
-        }
-
-        .tech-item {
-            padding: 0.8em 1em;
-            border-left: 3px solid #ab47bc;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 0 6px 6px 0;
-        }
-
-        .tech-item strong {
-            display: block;
-            margin-bottom: 0.3em;
-            font-size: 0.9em;
-        }
-
-        .tech-item span {
-            font-size: 0.82em;
-            line-height: 1.5;
-            opacity: 0.85;
-        }
-
-        code {
-            background: rgba(66, 165, 245, 0.12);
-            padding: 0.15em 0.4em;
-            border-radius: 4px;
-            font-size: 0.88em;
-            font-family: 'Roboto Mono', monospace;
-        }
-    </style>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body>
-    <div class="nav-wrapper">
+    <header class="header">
+        <nav class="nav">
+            <a href="../../index.html#projects" class="project-back">
+                <i class="fas fa-arrow-left"></i> Back to Portfolio
+            </a>
+        </nav>
+    </header>
 
-        <a href="../../index.html">
-            <div class="dots-wrapper">
-                <div id="dot-1" class="browser-dot"></div>
-                <div id="dot-2" class="browser-dot"></div>
-                <div id="dot-3" class="browser-dot"></div>
-            </div>
-        </a>
-
-    </div>
-
-    <div class="main-container">
-
-        <h3>Privacy-Preserving Proximity Detection</h3>
+<main class="project-detail">
+        <div class="container">
+            <div class="project-content">
+<h3>Privacy-Preserving Proximity Detection</h3>
         <p><em>Secure Location Proximity Using Paillier Homomorphic Encryption — ICT2205/ICT2213 Applied Cryptography</em></p>
 
         <!-- ───── Overview ───── -->
@@ -414,8 +213,48 @@
         <h4>Team</h4>
         <p>Applied Cryptography — Group 18</p>
         <p><a href="https://github.com/ryangan28/Crypto" target="_blank">View on GitHub &rarr;</a></p>
+            </div><!-- /project-content -->
+        </div><!-- /container -->
+    </main>
 
-    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">
+                    Designed & Built by <strong>Azzi Izzuan</strong> &copy; <span id="current-year"></span>
+                </p>
+                <div class="footer-links">
+                    <a href="../../index.html#projects" aria-label="Home"><i class="fas fa-home"></i></a>
+                    <a href="../../resume.pdf" target="_blank" aria-label="Resume"><i class="fas fa-file-pdf"></i></a>
+                </div>
+            </div>
+        </div>
+        <script>
+        document.getElementById("current-year").textContent = new Date().getFullYear();
+    </script>
+</footer>
+  <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script id="scroll-top-script">
+    (function() {
+      var btn = document.getElementById('scroll-top');
+      if (!btn) return;
+      var ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(function() {
+            btn.classList.toggle('visible', window.scrollY > 300);
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+  </script>
 </body>
-
 </html>

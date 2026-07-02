@@ -1,91 +1,104 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Cyber Security Fundementals Home</title>
+    <title>Cyber Security Fundamentals</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
-
-    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" type="text/css" href="../../default.css">
-
-
-    <style type="text/css">
-        .img-container {
-            max-width: 600px;
-        }
-        
-        img {
-            width: 100%
-        }
-    </style>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body>
-    <div class="nav-wrapper">
+    <header class="header">
+        <nav class="nav">
+            <a href="../../index.html#projects" class="project-back">
+                <i class="fas fa-arrow-left"></i> Back to Portfolio
+            </a>
+        </nav>
+    </header>
 
-        <!-- Link around dots-wrapper added after tutorial video -->
-        <a href="../../index.html#projects">
-            <div class="dots-wrapper">
-                <div id="dot-1" class="browser-dot"></div>
-                <div id="dot-2" class="browser-dot"></div>
-                <div id="dot-3" class="browser-dot"></div>
-            </div>
-        </a>
+<main class="project-detail">
+        <div class="container">
+            <div class="project-content">
 
-        <ul id="navigation">
-            <li><a href="../../index.html#contact">Contact</a></li>
+                <div class="project-header">
+                    <span class="project-meta">Polytechnic &middot; Team Weedle</span>
+                    <h1>Cyber Security Fundamentals</h1>
+                </div>
 
-        </ul>
-    </div>
+                <p>In August 2019, my team and I embarked on a project. As a member of the team, called "Team Weedle," I collaborated with my group mates Quan Sheng and Jason. Our project was divided into three sections covering Cross-Site Request Forgery (CSRF) — from explanation, to tools, and finally a hands-on tutorial.</p>
 
+                <div class="card-grid">
+                    <div class="card-item">
+                        <img src="../../images/csf/part3.png" alt="CSRF Explanation" style="height:200px;object-fit:cover;width:100%;display:block;">
+                        <div class="card-body">
+                            <h4><a href="../csf/csf.html">Part 1 — CSRF Explanation</a></h4>
+                            <p>CSRF attacks can be prevented by implementing CSRF tokens, which are unique, unpredictable values included in each form or endpoint. When the user submits the form, the token is validated server-side to prevent unauthorized requests.</p>
+                        </div>
+                    </div>
+                    <div class="card-item">
+                        <img src="../../images/csf/part4.jpg" alt="Tools for CSRF" style="height:200px;object-fit:cover;width:100%;display:block;">
+                        <div class="card-body">
+                            <h4><a href="../csf/csf2.html">Part 2 — Tools Needed</a></h4>
+                            <p>Burp Suite, OWASP, Kali Linux — the essential toolkit for performing and understanding CSRF attacks.</p>
+                        </div>
+                    </div>
+                    <div class="card-item">
+                        <img src="../../images/csf/part2.png" alt="Performing CSRF" style="height:200px;object-fit:cover;width:100%;display:block;">
+                        <div class="card-body">
+                            <h4><a href="../csf/csf3.html">Part 3 — Performing CSRF</a></h4>
+                            <p>Step-by-step walkthrough using the tools from Part 2 to execute a real CSRF attack.</p>
+                        </div>
+                    </div>
+                </div>
 
-    <section class="s2">
-        <div class="main-container">
-            <br>
-
-            <h3>Cyber Security Fundementals</h3>
-
-            <p>In August 2019, my team and I embarked on a project. As a member of the team, called "Team Weedle," I collaborated with my group mates Quan Sheng and Jason. Our project was divided into three sections. The first part involved an overview of
-                what Cross-Site Request Forgery (CSRF) is, the second part involved an explanation of the necessary programs for CSRF, and the final part was a step-by-step tutorial on executing a CSRF attack.
-
-                <br>
-                <br>
-        </div>
-    </section>
-    <section class="s1">
-        <div class="main-container">
-            <div class="card">
-                <h4>Click -> <a href="../csf/csf.html" target="_blank">Part 1 - Cross-Site Request Forgery Explanation</a></h4>
-                <img class="fakeimg" style="height:200px;" src="../../images/csf/part3.png">
-                <p>CSRF attacks can be prevented by implementing CSRF tokens, which are unique, unpredictable values that are included in each form or endpoint that processes user input. When the user submits the form, the token is also submitted with the
-                    request. The server then verifies that the token is valid and matches the one generated for that session, preventing unauthorized requests.</p>
-            </div>
-        </div>
-    </section>
-    <section class="s2">
-        <div class="main-container">
-            <div class="card">
-                <h4>Click -> <a href="../csf/csf2.html" target="_blank">Part 2 - Tools needed to perform CSRF</a></h4>
-                <img class="fakeimg" style="height:200px;" src="../../images/csf/part4.jpg">
-                <p>Burp-Suite,OWASP,Kali Linux</p>
             </div>
         </div>
-    </section>
-    <section class="s1">
-        <div class="main-container">
-            <div class="card">
-                <h4>Click -> <a href="../csf/csf3.html" target="_blank">Part 3 - Performing CSRF</a></h4>
-                <img class="fakeimg" style="height:200px;" src="../../images/csf/part2.png">
-                <p>Using the tools mentioned in part 2 to perform CSRF.</p>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">
+                    Designed & Built by <strong>Azzi Izzuan</strong> &copy; <span id="current-year"></span>
+                </p>
+                <div class="footer-links">
+                    <a href="../../index.html#projects" aria-label="Home"><i class="fas fa-home"></i></a>
+                    <a href="../../resume.pdf" target="_blank" aria-label="Resume"><i class="fas fa-file-pdf"></i></a>
+                </div>
             </div>
         </div>
-    </section>
+        <script>
+        document.getElementById("current-year").textContent = new Date().getFullYear();
+    </script>
+</footer>
+  <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script id="scroll-top-script">
+    (function() {
+      var btn = document.getElementById('scroll-top');
+      if (!btn) return;
+      var ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(function() {
+            btn.classList.toggle('visible', window.scrollY > 300);
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+  </script>
 </body>
-
 </html>

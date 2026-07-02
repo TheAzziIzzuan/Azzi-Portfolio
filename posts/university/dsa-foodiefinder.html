@@ -1,59 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>DSA Project - FoodieFinder</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
-
-    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" type="text/css" href="../../default.css">
-
-    <style type="text/css">
-        .img-container {
-            max-width: 600px;
-        }
-        
-        img {
-            width: 100%
-        }
-    </style>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body>
-    <div class="nav-wrapper">
+    <header class="header">
+        <nav class="nav">
+            <a href="../../index.html#projects" class="project-back">
+                <i class="fas fa-arrow-left"></i> Back to Portfolio
+            </a>
+        </nav>
+    </header>
 
-        <!-- Link around dots-wrapper added after tutorial video -->
-        <a href="../../index.html">
-            <div class="dots-wrapper">
-                <div id="dot-1" class="browser-dot"></div>
-                <div id="dot-2" class="browser-dot"></div>
-                <div id="dot-3" class="browser-dot"></div>
-            </div>
-        </a>
-
-        <ul id="navigation">
-            <li><a href="../../index.html#contact">Contact</a></li>
-
-        </ul>
-    </div>
-
-    <div class="main-container">
-        <br>
-
-        <h3>Data Structures &amp; Algorithms - FoodieFinder</h3>
+<main class="project-detail">
+        <div class="container">
+            <div class="project-content">
+<h3>Data Structures &amp; Algorithms - FoodieFinder</h3>
 
         <p><strong>Last Updated:</strong> 11/02/2026</p>
         <p><strong>Project Type:</strong> Full-stack web application (team project)</p>
 
         <h4>Project Overview</h4>
-        <p align="justify">FoodieFinder is a web application that helps users find halal and vegan food options across Singapore. It combines an interactive map, real-time search, restaurant reviews, rating filters, and walking directions — all powered by data structures and algorithms under the hood.</p>
+        <p >FoodieFinder is a web application that helps users find halal and vegan food options across Singapore. It combines an interactive map, real-time search, restaurant reviews, rating filters, and walking directions — all powered by data structures and algorithms under the hood.</p>
 
-        <p align="justify">The project goes beyond a simple restaurant listing. It uses Dijkstra's algorithm to calculate nearest restaurants and walking routes, a Trie data structure for fast autocomplete search, QuickSort for filtering by ratings, and sequential search for review lookups. The data itself was collected by building custom web scrapers.</p>
+        <p >The project goes beyond a simple restaurant listing. It uses Dijkstra's algorithm to calculate nearest restaurants and walking routes, a Trie data structure for fast autocomplete search, QuickSort for filtering by ratings, and sequential search for review lookups. The data itself was collected by building custom web scrapers.</p>
 
         <h4>What It Does</h4>
         <ul>
@@ -67,16 +47,16 @@
 
         <h4>Data Structures &amp; Algorithms Used</h4>
 
-        <p align="justify"><strong>Dijkstra's Algorithm:</strong> Used to calculate shortest distances from the user's location to all nearby restaurants and MRT stations. The algorithm builds a graph of nodes (user location + all markers) and edges (distances between them), then finds the optimal nearest locations. It's also used for walking route calculation through OpenStreetMap road networks.</p>
+        <p ><strong>Dijkstra's Algorithm:</strong> Used to calculate shortest distances from the user's location to all nearby restaurants and MRT stations. The algorithm builds a graph of nodes (user location + all markers) and edges (distances between them), then finds the optimal nearest locations. It's also used for walking route calculation through OpenStreetMap road networks.</p>
 
-        <p align="justify"><strong>Trie (Prefix Tree):</strong> Powers the search autocomplete feature. All restaurant names and MRT station names are inserted into the Trie at startup. When the user types, the Trie efficiently returns all matching entries by prefix, providing instant suggestions without scanning the entire dataset.</p>
+        <p ><strong>Trie (Prefix Tree):</strong> Powers the search autocomplete feature. All restaurant names and MRT station names are inserted into the Trie at startup. When the user types, the Trie efficiently returns all matching entries by prefix, providing instant suggestions without scanning the entire dataset.</p>
 
-        <p align="justify"><strong>QuickSort:</strong> Applied to filter and sort restaurant results by rating. When users filter by a minimum rating, QuickSort efficiently orders the results for display.</p>
+        <p ><strong>QuickSort:</strong> Applied to filter and sort restaurant results by rating. When users filter by a minimum rating, QuickSort efficiently orders the results for display.</p>
 
-        <p align="justify"><strong>Sequential Search:</strong> Used for searching through reviews and matching user queries against restaurant titles in the dataset.</p>
+        <p ><strong>Sequential Search:</strong> Used for searching through reviews and matching user queries against restaurant titles in the dataset.</p>
 
         <h4>Web Scraping</h4>
-        <p align="justify">The restaurant data was collected by building custom web scrapers using Selenium and BeautifulSoup. The scrapers targeted WhereHalal.com to extract halal restaurant listings including name, address, food type, certification status, and ratings. The data was cleaned and validated using Python scripts that checked for missing values and invalid characters.</p>
+        <p >The restaurant data was collected by building custom web scrapers using Selenium and BeautifulSoup. The scrapers targeted WhereHalal.com to extract halal restaurant listings including name, address, food type, certification status, and ratings. The data was cleaned and validated using Python scripts that checked for missing values and invalid characters.</p>
 
         <h4>Tech Stack</h4>
         <ul>
@@ -89,18 +69,57 @@
         </ul>
 
         <h4>Why This Matters</h4>
-        <p align="justify">This project demonstrates how data structures and algorithms aren't just theory — they solve real problems. Dijkstra's algorithm makes location-based search fast and accurate. The Trie makes search feel instant. QuickSort handles filtering efficiently even with large datasets. And the web scraping pipeline shows how to collect, clean, and serve real-world data.</p>
+        <p >This project demonstrates how data structures and algorithms aren't just theory — they solve real problems. Dijkstra's algorithm makes location-based search fast and accurate. The Trie makes search feel instant. QuickSort handles filtering efficiently even with large datasets. And the web scraping pipeline shows how to collect, clean, and serve real-world data.</p>
 
-        <p align="justify">From a full-stack perspective, the project covers backend API design, database management, frontend interactivity, map integration, and data engineering — all in one cohesive application.</p>
+        <p >From a full-stack perspective, the project covers backend API design, database management, frontend interactivity, map integration, and data engineering — all in one cohesive application.</p>
 
         <h4>Team</h4>
-        <p align="justify">P7 Group 2 — Data Structures and Algorithms course project.</p>
+        <p >P7 Group 2 — Data Structures and Algorithms course project.</p>
 
         <h4>Source Code</h4>
-        <p align="justify"><a href="https://github.com/onghongliang/DSAGroup2" target="_blank">View on GitHub</a></p>
+        <p ><a href="https://github.com/onghongliang/DSAGroup2" target="_blank">View on GitHub</a></p>
+            </div><!-- /project-content -->
+        </div><!-- /container -->
+    </main>
 
-    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">
+                    Designed & Built by <strong>Azzi Izzuan</strong> &copy; <span id="current-year"></span>
+                </p>
+                <div class="footer-links">
+                    <a href="../../index.html#projects" aria-label="Home"><i class="fas fa-home"></i></a>
+                    <a href="../../resume.pdf" target="_blank" aria-label="Resume"><i class="fas fa-file-pdf"></i></a>
+                </div>
+            </div>
+        </div>
+        <script>
+        document.getElementById("current-year").textContent = new Date().getFullYear();
+    </script>
+</footer>
+  <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
+  <script id="scroll-top-script">
+    (function() {
+      var btn = document.getElementById('scroll-top');
+      if (!btn) return;
+      var ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(function() {
+            btn.classList.toggle('visible', window.scrollY > 300);
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+  </script>
 </body>
-
 </html>
