@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ───── PROJECT FILTER ───── */
   const filterBar = document.getElementById('filter-bar');
   const projectGrid = document.getElementById('project-grid');
+  const filterEmpty = document.getElementById('filter-empty');
 
   if (filterBar && projectGrid) {
     const pills = filterBar.querySelectorAll('.filter-pill');
@@ -79,14 +80,21 @@ document.addEventListener('DOMContentLoaded', () => {
         pills.forEach(p => p.classList.remove('active'));
         pill.classList.add('active');
 
-        // Show/hide cards (instant — no animation)
+        // Show/hide cards and track visible count
+        let visible = 0;
         cards.forEach(card => {
           if (filter === 'all' || card.getAttribute('data-category') === filter) {
             card.classList.remove('hidden');
+            visible++;
           } else {
             card.classList.add('hidden');
           }
         });
+
+        // Show empty state if nothing matches
+        if (filterEmpty) {
+          filterEmpty.hidden = visible > 0;
+        }
       });
     });
   }
